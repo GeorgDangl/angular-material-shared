@@ -1,0 +1,41 @@
+{
+  "name": "angular-material-shared",
+  "version": "1.0.0",
+  "repository": "https://github.com/GeorgDangl/angular-material-shared",
+  "description": "Shared components to be used in Angular Material apps",
+  "main": "./src/angular-material-shared.module.ts",
+  "typings": "./src/angular-material-shared.module",
+  "scripts": {
+    "test": "karma start",
+    "test:dev": "karma start --singleRun false --browsers Chrome",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@angular/common": ">=5.0.1",
+    "@angular/core": ">=5.0.1",
+    "rxjs": ">=5.5.2"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^5.0.1",
+    "@angular/platform-browser": "^5.0.1",
+    "@angular/platform-browser-dynamic": "^5.0.1",
+    "@types/core-js": "^0.9.39",
+    "@types/jasmine": "2.8.2",
+    "@types/node": "^7.0.13",
+    "jasmine-core": "~2.8.0",
+    "karma": "~1.7.1",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-cli": "~1.0.1",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-junit-reporter": "~1.2.0",
+    "karma-phantomjs-launcher": "1.0.4",
+    "karma-typescript": "~3.0.8",
+    "typescript": "2.4.2",
+    "zone.js": "~0.8.18",
+    "puppeteer": "1.2.0",
+    "tslint": "~5.8.0",
+    "codelyzer": "4.0.1",
+    "karma-typescript-angular2-transform": "1.0.2"
+  }
+}
