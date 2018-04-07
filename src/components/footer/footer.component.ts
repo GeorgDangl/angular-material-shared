@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-
-  private currentYear = new Date().getFullYear();
-  private initialYear = 2017;
-  copyrightTime = this.initialYear === this.currentYear
-    ? this.initialYear.toString()
-    : `${this.initialYear} - ${this.currentYear}`;
+  currentYear = new Date().getFullYear();
 }
