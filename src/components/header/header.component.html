@@ -8,12 +8,19 @@
       </a>
   </mat-toolbar-row>
   <mat-toolbar-row *ngIf="showPrerelease" class="preview-notice">
-      <span>
-          <mat-icon>warning</mat-icon> This is a preview site.
-      </span>
-      <a href="{{preReleaseLiveSiteLink}}" *ngIf="preReleaseLiveSiteLink">Click here to go to the live site</a>
-      <span *ngIf="preReleaseVersion">Version: {{preReleaseVersion}}</span>
-      <span *ngIf="preReleaseBuildDate">Built: {{preReleaseBuildDate | date:'dd.MM.yyyy HH:mm'}} (UTC)</span>
-      <button mat-button mat-raised-button color="primary" (click)="showPrerelease = false">OK</button>
+    <div class="preview-row">
+        <span>
+            <mat-icon>warning</mat-icon> This is a preview site.
+        </span>
+        <a href="{{preReleaseLiveSiteLink}}" *ngIf="preReleaseLiveSiteLink">Click here to go to the live site</a>
+        <div>
+            <button mat-button mat-raised-button color="primary" (click)="showPrerelease = false">OK</button>
+            <button mat-button mat-raised-button color="primary" (click)="hideForCurrentVersion()">Hide for this version</button>
+        </div>
+    </div>
+    <div class="preview-row">
+        <span *ngIf="preReleaseVersion">Version: {{preReleaseVersion}}</span>
+        <span *ngIf="preReleaseBuildDate">Built: {{preReleaseBuildDate | date:'dd.MM.yyyy HH:mm'}}</span>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>

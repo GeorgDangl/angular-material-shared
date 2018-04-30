@@ -3,9 +3,14 @@
 .preview-notice {
     background-color: $color-warn;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    a {
-        text-decoration: underline;
+    flex-direction: column;
+    .preview-row {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        a {
+            text-decoration: underline;
+        }
     }
 }

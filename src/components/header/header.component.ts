@@ -19,5 +19,15 @@ export class HeaderComponent implements OnInit {
     this.showPrerelease = this.preReleaseVersion != null
       || this.preReleaseBuildDate != null
       || this.preReleaseLiveSiteLink != null;
+    if (this.preReleaseVersion != null && typeof (Storage) !== 'undefined') {
+      this.showPrerelease = this.preReleaseVersion != localStorage.getItem('dangl_preview_notice_header_hide_version');
+    }
+  }
+
+  hideForCurrentVersion() {
+    if (typeof (Storage) !== 'undefined') {
+      localStorage.setItem('dangl_preview_notice_header_hide_version', this.preReleaseVersion);
+      this.showPrerelease = false;
+    }
   }
 }
