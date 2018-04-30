@@ -13,7 +13,7 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files: [
       { pattern: 'test.spec.ts' },
-      { pattern: 'src/**/*.+(ts|html|scss)' }
+      { pattern: 'src/**/*.+(ts|html)' }
     ],
 
     client: {
