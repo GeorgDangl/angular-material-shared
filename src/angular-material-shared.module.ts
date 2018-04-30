@@ -5,6 +5,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { TinyMceComponent } from './components/tiny-mce/tiny-mce.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   ],
   imports: [
     MatToolbarModule,
-    RouterModule
+    MatIconModule,
+    MatButtonModule,
+    RouterModule,
+    CommonModule
   ],
   exports: [
     FooterComponent,

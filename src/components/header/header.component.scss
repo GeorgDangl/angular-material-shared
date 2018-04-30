@@ -1,0 +1,11 @@
+@import 'material-variables.scss';
+
+.preview-notice {
+    background-color: $color-warn;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    a {
+        text-decoration: underline;
+    }
+}

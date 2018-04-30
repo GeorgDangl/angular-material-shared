@@ -11,9 +11,13 @@ Then, simply import the module:
 
 ## Functionality
 
+### Header
+
+The `dangl-header` component can display a common header in all Dangl**IT** apps. It additionally supports to display an information if it is in a preview environment.
+
 ### Footer
 
-There is a `dangl-footer` component that show copyright info.
+There is a `dangl-footer` component that shows copyright info.
 
 ### TinyMCE Editor
 
