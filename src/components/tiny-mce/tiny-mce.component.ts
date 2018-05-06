@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, Output, EventEmitter, forwardRef, Inject } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Output, EventEmitter, forwardRef, Inject, NgZone } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, Validator, FormControl, AbstractControl, NgModel } from '@angular/forms';
 import { GuidGenerator } from '../utils/guid-generator/guid-generator';
 
@@ -34,7 +34,8 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };
 
-  constructor(@Inject('TINYMCE_SKIN_URL') private skinUrl: string) { }
+  constructor(@Inject('TINYMCE_SKIN_URL') private skinUrl: string,
+    private ngZone: NgZone) { }
 
   ngAfterViewInit() {
     tinymce.init({
@@ -44,9 +45,16 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
       branding: false, // To disable 'POWERED BY TINYMCE' in footer
       setup: editor => {
         this.editor = editor;
-        editor.on('change', () => {
+        editor.on('change keyup', () => {
           const content = editor.getContent();
-          this.editorContent = content;
+          // tinyMCE events are outside of the Angular zone
+          // ngZone.run() makes sure everything runs in the
+          // Angular zone, so it integrates in the Angular
+          // lifecycle. Otherwise, e.g., 'required' validation
+          // would not update on change
+          this.ngZone.run(() => {
+            this.editorContent = content;
+          });
         });
       },
     });
