@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'dangl-footer',
@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
+
+  @Input() showLegalNotice = false;
+  @Input() legalNoticeText = 'Legal Notice';
+  @Input() legalNoticeLink = 'legal-notice';
+
 }
