@@ -13,7 +13,7 @@ Then, simply import the module:
 
 ### Header
 
-The `dangl-header` component can display a common header in all Dangl**IT** apps. It additionally supports to display an information if it is in a preview environment.
+The `dangl-header` component can display a common header in all Dangl**IT** apps. It additionally supports to display an information if it is in a preview environment. The header supports right-aligned content via a projected `ng-content`.
 
 ### Footer
 

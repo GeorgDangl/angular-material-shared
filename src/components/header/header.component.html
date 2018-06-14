@@ -6,6 +6,8 @@
           {{prefix}}<strong>{{postfix}}</strong>
         </h1>
       </a>
+      <span class="toolbar-spacer"></span>
+      <ng-content></ng-content>
   </mat-toolbar-row>
   <mat-toolbar-row *ngIf="showPrerelease" class="preview-notice">
     <div class="preview-row">
