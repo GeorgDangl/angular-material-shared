@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'dangl-header',
@@ -9,6 +9,8 @@ export class HeaderComponent implements OnInit {
 
   @Input() prefix: string;
   @Input() postfix: string;
+  @Input() showMenuButton = false;
+  @Output() onMenuButtonClicked = new EventEmitter();
 
   @Input() preReleaseVersion: string;
   @Input() preReleaseBuildDate: Date;

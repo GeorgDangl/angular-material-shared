@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-      <a routerLink="/">
+      <button mat-button class="menu-button" *ngIf="showMenuButton" (click)="onMenuButtonClicked.next()">
+          <mat-icon>menu</mat-icon>
+      </button>
+      <a routerLink="/" class="header-title">
         <h1>
           <span class="gd-logo">GD</span>
           {{prefix}}<strong>{{postfix}}</strong>

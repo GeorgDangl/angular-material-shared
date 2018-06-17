@@ -15,6 +15,23 @@
     }
 }
 
+mat-toolbar-row {
+    padding-left: 0;
+}
+
+.header-title {
+    padding-left: 16px;
+}
+
+.menu-button {
+    transform: scale(1.25);
+    height: 100%;
+    margin-left: 0;
+    min-width: auto;
+    width: 52px;
+    border-right: 1px solid rgba(0,0,0,.15);
+}
+
 .toolbar-spacer {
   flex: 1 1 auto;
 }
