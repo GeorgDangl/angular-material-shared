@@ -1,5 +1,10 @@
 @import 'material-variables.scss';
 
+.header-divider {
+    background-color: $color-dark;
+    height: 12px;
+}
+
 .preview-notice {
     background-color: $color-warn;
     display: flex;
