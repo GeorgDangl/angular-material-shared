@@ -24,12 +24,15 @@ mat-toolbar-row {
 }
 
 .menu-button {
-    transform: scale(1.25);
     height: 100%;
     margin-left: 0;
     min-width: auto;
     width: 52px;
     border-right: 1px solid rgba(0,0,0,.15);
+    border-radius: 0;
+    mat-icon {
+        transform: scale(1.25);
+    }
 }
 
 .toolbar-spacer {
