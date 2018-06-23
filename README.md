@@ -17,7 +17,8 @@ The `dangl-header` component can display a common header in all Dangl**IT** apps
 
 ### Footer
 
-There is a `dangl-footer` component that shows copyright info.
+There is a `dangl-footer` component that shows copyright info.  
+If the legal notice link is enabled, it can either be configured to route to a location or to emit an event when the legal notice is requested.
 
 ### TinyMCE Editor
 

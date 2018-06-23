@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'dangl-footer',
@@ -11,5 +11,7 @@ export class FooterComponent {
   @Input() showLegalNotice = false;
   @Input() legalNoticeText = 'Legal Notice';
   @Input() legalNoticeLink = 'legal-notice';
-
+  @Input() useLegalNoticeCallback = false;
+  @Output() legalNoticeCallback = new EventEmitter();
+  
 }
