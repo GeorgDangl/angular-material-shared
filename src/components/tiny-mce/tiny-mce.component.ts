@@ -27,7 +27,14 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
   set editorContent(value: string) {
     if (value !== this._editorContent) {
       this._editorContent = value;
-      this.onChangeCallback(value);
+      this.ngZone.run(() => {
+        // tinyMCE events are outside of the Angular zone
+        // ngZone.run() makes sure everything runs in the
+        // Angular zone, so it integrates in the Angular
+        // lifecycle. Otherwise, e.g., 'required' validation
+        // would not update on change
+        this.onChangeCallback(value);
+      });
     }
   }
 
@@ -44,19 +51,17 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
       skin_url: this.skinUrl,
       branding: false, // To disable 'POWERED BY TINYMCE' in footer
       setup: editor => {
-        this.editor = editor;
         editor.on('change keyup', () => {
           const content = editor.getContent();
-          // tinyMCE events are outside of the Angular zone
-          // ngZone.run() makes sure everything runs in the
-          // Angular zone, so it integrates in the Angular
-          // lifecycle. Otherwise, e.g., 'required' validation
-          // would not update on change
-          this.ngZone.run(() => {
-            this.editorContent = content;
-          });
+          this.editorContent = content;
         });
       },
+      init_instance_callback: editor => {
+        if (editor && this.editorContent) {
+          editor.setContent(this.editorContent);
+        }
+        this.editor = editor;
+      }
     });
   }
 
@@ -65,15 +70,15 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
   }
 
   writeValue(obj: any): void {
+    obj = obj || '';
+    this.editorContent = obj;
     if (!this.editor) {
       return;
     }
-    obj = obj || '';
     const tinyMceContent = this.editor.getContent();
     if (tinyMceContent !== obj) {
       this.editor.setContent(obj);
     }
-    this.editorContent = obj;
   }
   registerOnChange(fn: any): void {
     this.onChangeCallback = fn;
