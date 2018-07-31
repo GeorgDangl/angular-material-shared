@@ -23,12 +23,17 @@
               "src/assets"
             ],
             "styles": [
-              {
-                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
-              },
-              "src/styles.css"
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/tinymce/tinymce.min.js",
+              "node_modules/tinymce/themes/modern/theme.min.js",
+              "node_modules/tinymce/plugins/link/plugin.min.js",
+              "node_modules/tinymce/plugins/paste/plugin.min.js",
+              "node_modules/tinymce/plugins/table/plugin.min.js",
+              "node_modules/tinymce/plugins/image/plugin.min.js",
+              "node_modules/tinymce/plugins/code/plugin.min.js"
+            ]
           },
           "configurations": {
             "production": {

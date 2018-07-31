@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialSharedModule } from 'angular-material-shared';
+import { RouterModule } from '../../node_modules/@angular/router';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot([]),
+    AngularMaterialSharedModule
   ],
-  providers: [],
+  providers: [{
+    provide: 'TINYMCE_SKIN_URL',
+    useValue: '/assets/skins/lightgray'
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
