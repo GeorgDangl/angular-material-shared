@@ -1,0 +1,22 @@
+// Import material theming functions
+@import '~@angular/material/theming';
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+
+$dangl-app-primary: mat-palette($mat-cyan, 600, 500, 700);
+$dangl-app-accent:  mat-palette($mat-blue-grey, 500, 400, 700);
+
+// The warn palette is optional (defaults to red).
+$dangl-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$dangl-app-theme: mat-light-theme($dangl-app-primary, $dangl-app-accent, $dangl-app-warn);
+
+// They are just exported below to be easier to use in the project
+$color-primary: mat-color($dangl-app-primary);
+$color-accent:  mat-color($dangl-app-accent);
+$color-warn:    mat-color($dangl-app-warn);
+$color-dark: #3b4c55;
+$color-light: #bdbdbd;

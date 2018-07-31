@@ -1,0 +1,15 @@
+{
+  "name": "angular-material-shared",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/animations": "^6.1.0",
+    "@angular/common": "^6.1.0",
+    "@angular/compiler": "^6.1.0",
+    "@angular/router": "^6.1.0",
+    "@angular/core": "^6.1.0",
+    "@angular/forms": "^6.1.0",
+    "@angular/http": "^6.1.0",
+    "@angular/material": "^6.4.2",
+    "@angular/cdk": "^6.2.0"
+  }
+}
