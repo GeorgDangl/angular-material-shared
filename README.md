@@ -3,10 +3,15 @@ Shared components & styles to be used in Angular Material apps.
 
 ## Usage
 
-To use these styles in an Angular app, add this package to your project.  
+To use these styles in an Angular app, add this package to your project. It's published as `@dangl/angular-material-shared`.
 Then, simply import the module:
 
-    import { AngularMaterialSharedModule } from 'angular-material-shared';
+    import { AngularMaterialSharedModule } from '@dangl/angular-material-shared';
+
+### Demo
+
+You can run `ng serve` in the `src/angular-material-shared-demo` folder to run a
+demo locally. Make sure that the library was built first with `npm run build:library`.
 
 ## Functionality
 
@@ -14,13 +19,13 @@ Then, simply import the module:
 
 This package defines a common theme to be used in all Dangl**IT** apps.
 
-Add this import to your globall `styles.scss` file:
+Add this import to your global `styles.scss` file:
 
-    @import '~angular-material-shared/styles/material-style.scss';
+    @import '~@dangl/angular-material-shared/styles/material-style.scss';
 
 To access color variables, you can add this import to any file:
 
-    @import '~angular-material-shared/styles/material-variables.scss';
+    @import '~@dangl/angular-material-shared/styles/material-variables.scss';
     // Provides the following colors:
     $color-primary: mat-color($dangl-app-primary);
     $color-accent:  mat-color($dangl-app-accent);

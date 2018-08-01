@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -17,6 +17,8 @@
     <PackageReference Include="Nuke.Common" Version="$(NukeVersion)" />
     <PackageReference Include="Nuke.CodeGeneration" Version="$(NukeVersion)" Condition="'$(NukeCodeGeneration)' == 'True'" />
     <PackageReference Include="GitVersion.CommandLine" Version="4.0.0-beta0012" />
+    <PackageReference Include="Nuke.GitHub" Version="1.1.0" />
+    <PackageReference Include="Nuke.Azure.KeyVault" Version="0.2.0" />
   </ItemGroup>
 
   <ItemGroup>
