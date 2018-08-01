@@ -34,7 +34,7 @@ pipeline {
         }
         stage ('Publish npm library') {
             steps {
-                powershell '/build.ps1 NgLibraryPublish+PublishGitHubRelease'
+                powershell './build.ps1 NgLibraryPublish+PublishGitHubRelease'
             }
         }
     }
