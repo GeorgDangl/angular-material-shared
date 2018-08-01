@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage ('Test') {
             steps {
-                powershell 'NgLibraryTest'
+                powershell './build.ps1 NgLibraryTest'
             }
             post {
                 always {
@@ -34,7 +34,7 @@ pipeline {
         }
         stage ('Publish npm library') {
             steps {
-                powershell 'NgLibraryPublish+PublishGitHubRelease'
+                powershell '/build.ps1 NgLibraryPublish+PublishGitHubRelease'
             }
         }
     }
