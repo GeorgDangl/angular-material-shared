@@ -1,15 +1,37 @@
 # angular-material-shared
-Shared components to be used in Angular Material apps.  
-They may partially depend on styles used in [angular-material-styles](https://github.com/GeorgDangl/angular-material-styles).
+Shared components & styles to be used in Angular Material apps.  
 
 ## Usage
 
-To use these styles in an Angular app, add this repository as a submodule to your project.  
+To use these styles in an Angular app, add this package to your project. It's published as `@dangl/angular-material-shared`.
 Then, simply import the module:
 
-    import { AngularMaterialSharedModule } from '../../angular-material-shared/src/angular-material-shared.module';
+    import { AngularMaterialSharedModule } from '@dangl/angular-material-shared';
+
+### Demo
+
+You can run `ng serve` in the `src/angular-material-shared-demo` folder to run a
+demo locally. Make sure that the library was built first with `npm run build:library`.
 
 ## Functionality
+
+## Styles
+
+This package defines a common theme to be used in all Dangl**IT** apps.
+
+Add this import to your global `styles.scss` file:
+
+    @import '~@dangl/angular-material-shared/styles/material-style.scss';
+
+To access color variables, you can add this import to any file:
+
+    @import '~@dangl/angular-material-shared/styles/material-variables.scss';
+    // Provides the following colors:
+    $color-primary: mat-color($dangl-app-primary);
+    $color-accent:  mat-color($dangl-app-accent);
+    $color-warn:    mat-color($dangl-app-warn);
+    $color-dark: #3b4c55;
+    $color-light: #bdbdbd;
 
 ### Header
 
@@ -54,3 +76,8 @@ Because the paths might be dependent on your environment, you can use the follow
     const tinyMceSkinUrl = environment.production
       ? '/dist/assets/skins/lightgray'
       : '/assets/skins/lightgray';
+
+### GuidGenerator
+
+The `GuidGenerator` provides a static method to create pseudo-random Guids.
+ 

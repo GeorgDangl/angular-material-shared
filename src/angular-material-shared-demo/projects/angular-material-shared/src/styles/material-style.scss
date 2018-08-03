@@ -1,0 +1,12 @@
+// Import theming functions
+@import '~@angular/material/theming';
+// Import your custom theme
+@import './material-theme.scss';
+
+@import './material-variables.scss';
+
+@import './partials/logo.scss';
+@import './partials/mat-toolbar.scss';
+@import './partials/side-navbar.scss';
+@import './partials/footer.scss';
+@import './partials/highlights.scss';
