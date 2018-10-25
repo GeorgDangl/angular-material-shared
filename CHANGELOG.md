@@ -2,6 +2,9 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v1.1.1
+- Add feature to support localization / i18n of TinyMCE component
+
 ## v1.1.0
 - Update Angular to v7
 

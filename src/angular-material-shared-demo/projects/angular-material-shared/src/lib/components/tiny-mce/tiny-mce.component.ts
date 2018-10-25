@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, forwardRef, Inject, NgZone } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, forwardRef, Inject, NgZone, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { GuidGenerator } from '../../utils/guid-generator';
 
@@ -17,6 +17,8 @@ declare var tinymce: any;
   ]
 })
 export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueAccessor {
+
+  @Input() tinyMceLanguageUrl: string;
 
   elementId = GuidGenerator.generatePseudoRandomGuid();
   editor: any;
@@ -49,6 +51,7 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
       selector: '#' + this.elementId,
       plugins: ['link', 'paste', 'table', 'image', 'code'],
       skin_url: this.skinUrl,
+      language_url: this.tinyMceLanguageUrl,
       branding: false, // To disable 'POWERED BY TINYMCE' in footer
       setup: editor => {
         editor.on('change keyup', () => {
