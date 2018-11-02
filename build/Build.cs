@@ -57,6 +57,8 @@ class Build : NukeBuild
             .Aggregate((c, n) => c + "," + n);
         var languagesDownloadUrl = "https://www.tiny.cloud/tinymce-services-azure/1/i18n/download?langs=" + languagesQueryParam;
 
+        Nuke.Common.IO.FileSystemTasks.EnsureExistingDirectory(TinyMceLanguagesDirectory);
+
         using (var zipStream = await new System.Net.Http.HttpClient().GetStreamAsync(languagesDownloadUrl))
         {
             using (var zipArchive = new System.IO.Compression.ZipArchive(zipStream))
