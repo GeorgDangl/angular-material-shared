@@ -35,7 +35,7 @@ class Build : NukeBuild
     AbsolutePath SolutionDirectory => Solution.Directory;
     AbsolutePath OutputDirectory => SolutionDirectory / "output";
     AbsolutePath SourceDirectory => SolutionDirectory / "src";
-
+    AbsolutePath TinyMceLanguagesDirectory => NgAppDir / "dist" / "angular-material-shared" / "tinymce-langs";
     string ChangeLogFile => RootDirectory / "CHANGELOG.md";
 
     Target Clean => _ => _
@@ -43,9 +43,40 @@ class Build : NukeBuild
             {
                 DeleteDirectories(GlobDirectories(SourceDirectory, "angular-material-shared-demo/dist"));
                 EnsureCleanDirectory(OutputDirectory);
+                EnsureCleanDirectory(TinyMceLanguagesDirectory);
             });
 
     AbsolutePath NgAppDir => SourceDirectory / "angular-material-shared-demo";
+
+    Target DownloadTinyMceLanguages => _ => _
+        .DependsOn(Clean)
+        .Executes(async () =>
+        {
+            var tinyMceLanguagesJson = await Nuke.Common.IO.HttpTasks.HttpDownloadStringAsync("https://www.tiny.cloud/tinymce-services-azure/1/i18n/index");
+            var languagesQueryParam = Newtonsoft.Json.Linq.JArray.Parse(tinyMceLanguagesJson)
+                .Select(j => (string)j["code"])
+                .Aggregate((c, n) => c + "," + n);
+            var languagesDownloadUrl = "https://www.tiny.cloud/tinymce-services-azure/1/i18n/download?langs=" + languagesQueryParam;
+            
+            using (var zipStream = await new System.Net.Http.HttpClient().GetStreamAsync(languagesDownloadUrl))
+            {
+                using (var zipArchive = new System.IO.Compression.ZipArchive(zipStream))
+                {
+                    foreach (var entry in zipArchive.Entries)
+                    {
+                        var entryFilename = System.IO.Path.GetFileName(entry.FullName);
+                        var destination = System.IO.Path.Combine(TinyMceLanguagesDirectory, entryFilename);
+                        using (var entryStream = entry.Open())
+                        {
+                            using (var destinationFileStream = System.IO.File.Create(destination))
+                            {
+                                await entryStream.CopyToAsync(destinationFileStream);
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
     Target NgLibraryBuild => _ => _
         .DependsOn(Clean)
@@ -80,6 +111,7 @@ class Build : NukeBuild
 
     Target NgLibraryPublish => _ => _
         .DependsOn(NgLibraryBuild)
+        .DependsOn(DownloadTinyMceLanguages)
         .Executes(() =>
         {
             Npm("publish --access=public", NgAppDir / "dist" / "angular-material-shared");
