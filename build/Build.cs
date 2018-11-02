@@ -1,4 +1,4 @@
-﻿using Nuke.Common;
+using Nuke.Common;
 using Nuke.Common.Git;
 using Nuke.Common.Tools.GitVersion;
 using System.IO;
@@ -11,14 +11,17 @@ using Nuke.Azure.KeyVault;
 using System.Linq;
 using Nuke.GitHub;
 using System;
+using Nuke.Common.ProjectModel;
 
-[KeyVaultSettings(
-    VaultBaseUrlParameterName = nameof(KeyVaultBaseUrl),
-    ClientIdParameterName = nameof(KeyVaultClientId),
-    ClientSecretParameterName = nameof(KeyVaultClientSecret))]
 class Build : NukeBuild
 {
     public static int Main() => Execute<Build>(x => x.Clean);
+
+    [KeyVaultSettings(
+        BaseUrlParameterName = nameof(KeyVaultBaseUrl),
+        ClientIdParameterName = nameof(KeyVaultClientId),
+        ClientSecretParameterName = nameof(KeyVaultClientSecret))]
+    readonly KeyVaultSettings KeyVaultSettings;
 
     [Parameter] string KeyVaultBaseUrl;
     [Parameter] string KeyVaultClientId;
@@ -27,6 +30,11 @@ class Build : NukeBuild
     [GitRepository] readonly GitRepository GitRepository;
 
     [KeyVaultSecret] string GitHubAuthenticationToken;
+
+    [Solution("angular-material-shared.sln")] readonly Solution Solution;
+    AbsolutePath SolutionDirectory => Solution.Directory;
+    AbsolutePath OutputDirectory => SolutionDirectory / "output";
+    AbsolutePath SourceDirectory => SolutionDirectory / "src";
 
     string ChangeLogFile => RootDirectory / "CHANGELOG.md";
 
@@ -91,7 +99,7 @@ class Build : NukeBuild
 
             var repositoryInfo = GetGitHubRepositoryInfo(GitRepository);
 
-            await PublishRelease(new GitHubReleaseSettings()
+            await PublishRelease(x => x
                     .SetCommitSha(GitVersion.Sha)
                     .SetReleaseNotes(completeChangeLog)
                     .SetRepositoryName(repositoryInfo.repositoryName)
