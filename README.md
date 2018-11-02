@@ -79,14 +79,13 @@ Because the paths might be dependent on your environment, you can use the follow
 
 #### TinyMCE Localization / i18n
 
-By default, the TinyMCE editors language is English. You can include other languages as well. To do so, the following must be done:
+By default, the TinyMCE editors language is English. You can include other languages as well. This package includes all the language files. To use them, the following must be done:
 
-  1. The package `tinymce-i18n` should be referenced in your `package.json`, to automatically get all language files for TinyMCE
-  2. The language files should be available in your assets folder (or any other accessible location). You can use a `postinstall` script to copy them, just as with the regular assets:  
+  1. The language files should be available in your assets folder (or any other accessible location). You can use a `postinstall` script to copy them, just as with the regular assets:  
 
-    "postinstall": "xcopy /I /E /Y node_modules\\tinymce\\skins src\\assets\\skins&&xcopy /I /E /Y node_modules\\tinymce-i18n\\langs src\\assets\\tinymce-langs"
+    "postinstall": "xcopy /I /E /Y node_modules\\tinymce\\skins src\\assets\\skins&&xcopy /I /E /Y node_modules\\@dangl\\angular-material-shared\\tinymce-langs src\\assets\\tinymce-langs"
 
-  3. Supply the url to the language file to the component:
+  2. Supply the url to the language file to the component:
 
     <dangl-tiny-mce tinyMceLanguageUrl="/assets/tinymce-langs/de.js"></dangl-tiny-mce>
 
