@@ -89,7 +89,7 @@ By default, the TinyMCE editors language is English. You can include other langu
 
     <dangl-tiny-mce tinyMceLanguageUrl="/assets/tinymce-langs/de.js"></dangl-tiny-mce>
 
-Available language can be found here: https://www.tiny.cloud/get-tiny/language-packages/
+Available languages can be found here: https://www.tiny.cloud/get-tiny/language-packages/
 
 ### GuidGenerator
 
