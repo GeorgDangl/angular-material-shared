@@ -12,10 +12,11 @@ using System.Linq;
 using Nuke.GitHub;
 using System;
 using Nuke.Common.ProjectModel;
+using System.Threading.Tasks;
 
 class Build : NukeBuild
 {
-    public static int Main() => Execute<Build>(x => x.DownloadTinyMceLanguages);
+    public static int Main() => Execute<Build>(x => x.Clean);
 
     [KeyVaultSettings(
         BaseUrlParameterName = nameof(KeyVaultBaseUrl),
@@ -48,39 +49,37 @@ class Build : NukeBuild
 
     AbsolutePath NgAppDir => SourceDirectory / "angular-material-shared-demo";
 
-    Target DownloadTinyMceLanguages => _ => _
-        .DependsOn(Clean)
-        .Executes(async () =>
+    private async Task DownloadTinyMceLanguages()
+    {
+        var tinyMceLanguagesJson = await Nuke.Common.IO.HttpTasks.HttpDownloadStringAsync("https://www.tiny.cloud/tinymce-services-azure/1/i18n/index");
+        var languagesQueryParam = Newtonsoft.Json.Linq.JArray.Parse(tinyMceLanguagesJson)
+            .Select(j => (string)j["code"])
+            .Aggregate((c, n) => c + "," + n);
+        var languagesDownloadUrl = "https://www.tiny.cloud/tinymce-services-azure/1/i18n/download?langs=" + languagesQueryParam;
+
+        using (var zipStream = await new System.Net.Http.HttpClient().GetStreamAsync(languagesDownloadUrl))
         {
-            var tinyMceLanguagesJson = await Nuke.Common.IO.HttpTasks.HttpDownloadStringAsync("https://www.tiny.cloud/tinymce-services-azure/1/i18n/index");
-            var languagesQueryParam = Newtonsoft.Json.Linq.JArray.Parse(tinyMceLanguagesJson)
-                .Select(j => (string)j["code"])
-                .Aggregate((c, n) => c + "," + n);
-            var languagesDownloadUrl = "https://www.tiny.cloud/tinymce-services-azure/1/i18n/download?langs=" + languagesQueryParam;
-            
-            using (var zipStream = await new System.Net.Http.HttpClient().GetStreamAsync(languagesDownloadUrl))
+            using (var zipArchive = new System.IO.Compression.ZipArchive(zipStream))
             {
-                using (var zipArchive = new System.IO.Compression.ZipArchive(zipStream))
+                foreach (var entry in zipArchive.Entries)
                 {
-                    foreach (var entry in zipArchive.Entries)
+                    var entryFilename = System.IO.Path.GetFileName(entry.FullName);
+                    var destination = System.IO.Path.Combine(TinyMceLanguagesDirectory, entryFilename);
+                    using (var entryStream = entry.Open())
                     {
-                        var entryFilename = System.IO.Path.GetFileName(entry.FullName);
-                        var destination = System.IO.Path.Combine(TinyMceLanguagesDirectory, entryFilename);
-                        using (var entryStream = entry.Open())
+                        using (var destinationFileStream = System.IO.File.Create(destination))
                         {
-                            using (var destinationFileStream = System.IO.File.Create(destination))
-                            {
-                                await entryStream.CopyToAsync(destinationFileStream);
-                            }
+                            await entryStream.CopyToAsync(destinationFileStream);
                         }
                     }
                 }
             }
-        });
+        }
+    }
 
     Target NgLibraryBuild => _ => _
-        .DependsOn(DownloadTinyMceLanguages)
-        .Executes(() =>
+        .DependsOn(Clean)
+        .Executes(async () =>
         {
             if (IsLocalBuild)
             {
@@ -92,6 +91,7 @@ class Build : NukeBuild
             }
             Npm("run build:library", NgAppDir);
             Npm($"version {GitVersion.NuGetVersion}", NgAppDir / "dist" / "angular-material-shared");
+            await DownloadTinyMceLanguages();
 
             var srcReadmePath = SolutionDirectory / "README.md";
             var destReadmePath = NgAppDir / "dist" / "angular-material-shared" / "README.md";
