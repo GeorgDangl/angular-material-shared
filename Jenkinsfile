@@ -26,7 +26,7 @@ pipeline {
                        ignoreCase: true,
                        low: '',
                        normal: 'TODO',
-                       pattern: '**/*.cs, **/*.g4, **/*.ts, **/*.js',
+                       pattern: '**/*.cs, **/*.g4, **/*.ts',
                        unHealthy: '')
                        xunit testTimeMargin: '3000', thresholdMode: 1, thresholds: [failed(), skipped()], tools: [JUnit(deleteOutputFiles: true, failIfNotNew: true, pattern: '**/*karma-results.xml', skipNoTestFiles: false, stopProcessingIfError: true)]
                 }
