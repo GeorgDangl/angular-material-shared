@@ -1,4 +1,4 @@
-using Nuke.Common;
+﻿using Nuke.Common;
 using Nuke.Common.Git;
 using Nuke.Common.Tools.GitVersion;
 using System.IO;
@@ -15,7 +15,7 @@ using Nuke.Common.ProjectModel;
 
 class Build : NukeBuild
 {
-    public static int Main() => Execute<Build>(x => x.Clean);
+    public static int Main() => Execute<Build>(x => x.DownloadTinyMceLanguages);
 
     [KeyVaultSettings(
         BaseUrlParameterName = nameof(KeyVaultBaseUrl),
@@ -79,7 +79,7 @@ class Build : NukeBuild
         });
 
     Target NgLibraryBuild => _ => _
-        .DependsOn(Clean)
+        .DependsOn(DownloadTinyMceLanguages)
         .Executes(() =>
         {
             if (IsLocalBuild)
@@ -111,7 +111,6 @@ class Build : NukeBuild
 
     Target NgLibraryPublish => _ => _
         .DependsOn(NgLibraryBuild)
-        .DependsOn(DownloadTinyMceLanguages)
         .Executes(() =>
         {
             Npm("publish --access=public", NgAppDir / "dist" / "angular-material-shared");
