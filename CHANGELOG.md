@@ -2,6 +2,9 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v1.1.3
+- Update company name in footer component
+
 ## v1.1.2
 - Include TinyMCE i18n language files directly in this repo
 
