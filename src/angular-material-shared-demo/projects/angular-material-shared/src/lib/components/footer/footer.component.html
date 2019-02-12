@@ -1,7 +1,16 @@
 <footer class="gd-footer">
   <p>
-    <span class="gd-logo gd-logo-sm">GD</span>
-    <a href="https://www.dangl-it.com">Dangl<strong>IT</strong> GmbH © {{currentYear}}</a>
+    <ng-template [ngIf]="!options">
+        <span class="gd-logo gd-logo-sm">GD</span>
+        <span>&nbsp;</span>
+        <a href="https://www.dangl-it.com">Dangl<strong>IT</strong> GmbH © {{currentYear}}</a>
+    </ng-template>
+    <ng-template [ngIf]="options">
+        <span *ngIf="options.logoInitials" class="gd-logo gd-logo-sm">{{options.logoInitials}}</span>
+        <span>&nbsp;</span>
+        <a *ngIf="options.copyrightUrl" href="{{options.copyrightUrl}}"><span [innerHtml]="options.companyNameHtml"></span></a>
+        <span *ngIf="!options.copyrightUrl" [innerHtml]="options.companyNameHtml"></span>
+    </ng-template>
     <ng-template [ngIf]="showLegalNotice">
       -
       <a *ngIf="!useLegalNoticeCallback" [routerLink]="legalNoticeLink">{{legalNoticeText}}</a>
