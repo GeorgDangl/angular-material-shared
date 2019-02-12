@@ -42,6 +42,16 @@ The `dangl-header` component can display a common header in all Dangl**IT** apps
 There is a `dangl-footer` component that shows copyright info.  
 If the legal notice link is enabled, it can either be configured to route to a location or to emit an event when the legal notice is requested.
 
+You can optionally pass in footer options as `[options]` to use custom values:
+
+```typescript
+FooterOptions {
+    logoInitials?: string;
+    copyrightUrl?: string;
+    companyNameHtml?: string;
+}
+```
+
 ### TinyMCE Editor
 
 A rich-text WYSIWYG editor is available as `dangl-tiny-mce` component. This one requires the package `tinymce` to be referenced and available as global variable. To make it available, add this to your `scripts` section in `.angular-cli.json`:
