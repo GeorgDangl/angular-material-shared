@@ -2,6 +2,9 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v1.1.4:
+- Allow footer to be customizable
+
 ## v1.1.3
 - Update company name in footer component
 
