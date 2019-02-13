@@ -5,7 +5,7 @@
       </button>
       <a routerLink="/" class="header-title">
         <h1>
-          <span class="gd-logo">GD</span>
+          <span *ngIf="logoInitials" class="gd-logo">{{logoInitials}}</span>
           {{prefix}}<strong>{{postfix}}</strong>
         </h1>
       </a>
