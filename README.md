@@ -37,6 +37,8 @@ To access color variables, you can add this import to any file:
 
 The `dangl-header` component can display a common header in all Dangl**IT** apps. It additionally supports to display an information if it is in a preview environment. The header supports right-aligned content via a projected `ng-content`.
 
+You can optionally specify the logo initials by setting `logoInitials="GD"`. They default to `GD`. You can disable the logo by setting `[logoInitials]="null"`.
+
 ### Footer
 
 There is a `dangl-footer` component that shows copyright info.  

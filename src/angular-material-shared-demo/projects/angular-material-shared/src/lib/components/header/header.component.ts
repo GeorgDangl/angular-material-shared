@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   @Input() prefix: string;
   @Input() postfix: string;
   @Input() showMenuButton = false;
+  @Input() logoInitials = 'GD';
   @Output() menuButtonClicked = new EventEmitter();
 
   @Input() preReleaseVersion: string;

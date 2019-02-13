@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FooterOptions } from 'angular-material-shared';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  footerOptions = {
+  footerOptions: FooterOptions = {
     logoInitials: 'GD',
     copyrightUrl: 'https://www.dangl-it.com',
     companyNameHtml: 'Dangl<strong>IT</strong> GmbH'
