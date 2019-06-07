@@ -60,7 +60,7 @@ A rich-text WYSIWYG editor is available as `dangl-tiny-mce` component. This one 
 
     "scripts": [
       "../node_modules/tinymce/tinymce.js",
-      "../node_modules/tinymce/themes/modern/theme.js",
+      "../node_modules/tinymce/themes/silver/theme.js",
       "../node_modules/tinymce/plugins/link/plugin.js",
       "../node_modules/tinymce/plugins/paste/plugin.js",
       "../node_modules/tinymce/plugins/table/plugin.js",
@@ -73,7 +73,11 @@ Additionally, TinyMCE must load skins at runtime and requires the path to it. Yo
     providers: [
       {
         provide: 'TINYMCE_SKIN_URL',
-        useValue: tinyMceSkinUrl
+        useValue: tinyMceSkinUrl // e.g. '/assets/skins/ui/oxide'
+      },
+      {
+        provide: 'TINYMCE_CONTENT_CSS_URL',
+        useValue: tinyMceContentCssUrl // e.g. '/assets/skins/ui/oxide/content.min.css'
       }
     ]
 
@@ -86,8 +90,8 @@ Because the paths might be dependent on your environment, you can use the follow
     import { environment } from '../environments/environment';
 
     const tinyMceSkinUrl = environment.production
-      ? '/dist/assets/skins/lightgray'
-      : '/assets/skins/lightgray';
+      ? '/dist/assets/skins/ui/oxide'
+      : '/assets/skins/ui/oxide';
 
 #### TinyMCE Localization / i18n
 
@@ -97,9 +101,9 @@ By default, the TinyMCE editors language is English. You can include other langu
 
     "postinstall": "xcopy /I /E /Y node_modules\\tinymce\\skins src\\assets\\skins&&xcopy /I /E /Y node_modules\\@dangl\\angular-material-shared\\tinymce-langs src\\assets\\tinymce-langs"
 
-  2. Supply the url to the language file to the component:
+  2. Supply the url to the language file and the language code to the component:
 
-    <dangl-tiny-mce tinyMceLanguageUrl="/assets/tinymce-langs/de.js"></dangl-tiny-mce>
+    <dangl-tiny-mce tinyMceLanguageUrl="/assets/tinymce-langs/de.js" tinyMceLanguageCode="de"></dangl-tiny-mce>
 
 Available languages can be found here: https://www.tiny.cloud/get-tiny/language-packages/
 

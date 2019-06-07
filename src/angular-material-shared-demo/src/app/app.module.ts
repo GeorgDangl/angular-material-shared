@@ -18,7 +18,11 @@ import { RouterModule } from '../../node_modules/@angular/router';
   ],
   providers: [{
     provide: 'TINYMCE_SKIN_URL',
-    useValue: '/assets/skins/lightgray'
+    useValue: '/assets/skins/ui/oxide'
+  },
+  {
+    provide: 'TINYMCE_CONTENT_CSS_URL',
+    useValue: '/assets/skins/ui/oxide/content.min.css'
   }],
   bootstrap: [AppComponent]
 })
