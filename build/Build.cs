@@ -13,6 +13,7 @@ using Nuke.GitHub;
 using System;
 using Nuke.Common.ProjectModel;
 using System.Threading.Tasks;
+using Nuke.Common.Utilities.Collections;
 
 class Build : NukeBuild
 {
@@ -42,7 +43,7 @@ class Build : NukeBuild
     Target Clean => _ => _
             .Executes(() =>
             {
-                DeleteDirectories(GlobDirectories(SourceDirectory, "angular-material-shared-demo/dist"));
+                GlobDirectories(SourceDirectory, "angular-material-shared-demo/dist").ForEach(DeleteDirectory);
                 EnsureCleanDirectory(OutputDirectory);
                 EnsureCleanDirectory(TinyMceLanguagesDirectory);
             });
@@ -120,7 +121,7 @@ class Build : NukeBuild
 
     Target PublishGitHubRelease => _ => _
         .Requires(() => GitHubAuthenticationToken)
-        .OnlyWhen(() => GitVersion.BranchName.Equals("master") || GitVersion.BranchName.Equals("origin/master"))
+        .OnlyWhenDynamic(() => GitVersion.BranchName.Equals("master") || GitVersion.BranchName.Equals("origin/master"))
         .Executes(async () =>
         {
             var releaseTag = $"v{GitVersion.MajorMinorPatch}";
