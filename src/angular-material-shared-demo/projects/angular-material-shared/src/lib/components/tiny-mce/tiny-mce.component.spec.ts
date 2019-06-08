@@ -15,6 +15,10 @@ describe('TinyMceComponent', () => {
         {
           provide: 'TINYMCE_SKIN_URL',
           useValue: 'injected/url.css'
+        },
+        {
+          provide: 'TINYMCE_CONTENT_CSS_URL',
+          useValue: 'injected/content.css'
         }
       ]
     })
@@ -42,8 +46,12 @@ describe('TinyMceComponent', () => {
     expect(tinyMceInitParam).toBeTruthy();
   });
 
-  it('should have injected correct url', () => {
+  it('should have injected correct url for skin', () => {
     expect(tinyMceInitParam.skin_url).toEqual('injected/url.css');
+  });
+
+  it('should have injected correct url for content', () => {
+    expect(tinyMceInitParam.content_css).toEqual('injected/content.css');
   });
 
   it('should call remove on destroy', () => {

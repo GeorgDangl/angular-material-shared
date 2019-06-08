@@ -2,6 +2,10 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v1.2.0:
+- Update Angular to v8
+- The TinyMCE dependency was updated. Please update your script imports in `angular.json` to point to the new theme by replacing `"node_modules/tinymce/themes/modern/theme.min.js"` with `"node_modules/tinymce/themes/silver/theme.min.js"`
+
 ## v1.1.4:
 - Allow footer to be customizable
 

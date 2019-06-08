@@ -13,6 +13,7 @@ using Nuke.GitHub;
 using System;
 using Nuke.Common.ProjectModel;
 using System.Threading.Tasks;
+using Nuke.Common.Utilities.Collections;
 
 class Build : NukeBuild
 {
@@ -42,38 +43,26 @@ class Build : NukeBuild
     Target Clean => _ => _
             .Executes(() =>
             {
-                DeleteDirectories(GlobDirectories(SourceDirectory, "angular-material-shared-demo/dist"));
+                GlobDirectories(SourceDirectory, "angular-material-shared-demo/dist").ForEach(DeleteDirectory);
                 EnsureCleanDirectory(OutputDirectory);
                 EnsureCleanDirectory(TinyMceLanguagesDirectory);
             });
 
     AbsolutePath NgAppDir => SourceDirectory / "angular-material-shared-demo";
 
-    private async Task DownloadTinyMceLanguages()
+    private async Task CopyTinyMceLanguagesToDestination()
     {
-        var tinyMceLanguagesJson = await Nuke.Common.IO.HttpTasks.HttpDownloadStringAsync("https://www.tiny.cloud/tinymce-services-azure/1/i18n/index");
-        var languagesQueryParam = Newtonsoft.Json.Linq.JArray.Parse(tinyMceLanguagesJson)
-            .Select(j => (string)j["code"])
-            .Aggregate((c, n) => c + "," + n);
-        var languagesDownloadUrl = "https://www.tiny.cloud/tinymce-services-azure/1/i18n/download?langs=" + languagesQueryParam;
-
-        Nuke.Common.IO.FileSystemTasks.EnsureExistingDirectory(TinyMceLanguagesDirectory);
-
-        using (var zipStream = await new System.Net.Http.HttpClient().GetStreamAsync(languagesDownloadUrl))
+        EnsureCleanDirectory(TinyMceLanguagesDirectory);
+        var languageFiles = GlobFiles(NgAppDir / "node_modules" / "tinymce-i18n" / "langs5", "*.js").NotEmpty();
+        foreach (var languageFile in languageFiles)
         {
-            using (var zipArchive = new System.IO.Compression.ZipArchive(zipStream))
+            var fileName = Path.GetFileName(languageFile);
+            var destinationPath = Path.Combine(TinyMceLanguagesDirectory, fileName);
+            using (var sourceStream = File.OpenRead(languageFile))
             {
-                foreach (var entry in zipArchive.Entries)
+                using (var destinationFileStream = System.IO.File.Create(destinationPath))
                 {
-                    var entryFilename = System.IO.Path.GetFileName(entry.FullName);
-                    var destination = System.IO.Path.Combine(TinyMceLanguagesDirectory, entryFilename);
-                    using (var entryStream = entry.Open())
-                    {
-                        using (var destinationFileStream = System.IO.File.Create(destination))
-                        {
-                            await entryStream.CopyToAsync(destinationFileStream);
-                        }
-                    }
+                    await sourceStream.CopyToAsync(destinationFileStream);
                 }
             }
         }
@@ -93,7 +82,7 @@ class Build : NukeBuild
             }
             Npm("run build:library", NgAppDir);
             Npm($"version {GitVersion.NuGetVersion}", NgAppDir / "dist" / "angular-material-shared");
-            await DownloadTinyMceLanguages();
+            await CopyTinyMceLanguagesToDestination();
 
             var srcReadmePath = SolutionDirectory / "README.md";
             var destReadmePath = NgAppDir / "dist" / "angular-material-shared" / "README.md";
@@ -120,7 +109,7 @@ class Build : NukeBuild
 
     Target PublishGitHubRelease => _ => _
         .Requires(() => GitHubAuthenticationToken)
-        .OnlyWhen(() => GitVersion.BranchName.Equals("master") || GitVersion.BranchName.Equals("origin/master"))
+        .OnlyWhenDynamic(() => GitVersion.BranchName.Equals("master") || GitVersion.BranchName.Equals("origin/master"))
         .Executes(async () =>
         {
             var releaseTag = $"v{GitVersion.MajorMinorPatch}";

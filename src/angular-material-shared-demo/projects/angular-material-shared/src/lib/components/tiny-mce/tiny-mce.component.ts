@@ -19,6 +19,7 @@ declare var tinymce: any;
 export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueAccessor {
 
   @Input() tinyMceLanguageUrl: string;
+  @Input() tinyMceLanguageCode: string;
 
   elementId = GuidGenerator.generatePseudoRandomGuid();
   editor: any;
@@ -44,13 +45,17 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
   private onChangeCallback: (_: any) => void = () => { };
 
   constructor(@Inject('TINYMCE_SKIN_URL') private skinUrl: string,
-    private ngZone: NgZone) { }
+    @Inject('TINYMCE_CONTENT_CSS_URL') private contentCssUrl: string,
+    private ngZone: NgZone) {
+    }
 
   ngAfterViewInit() {
     tinymce.init({
       selector: '#' + this.elementId,
       plugins: ['link', 'paste', 'table', 'image', 'code'],
       skin_url: this.skinUrl,
+      content_css: this.contentCssUrl,
+      language: this.tinyMceLanguageCode,
       language_url: this.tinyMceLanguageUrl,
       branding: false, // To disable 'POWERED BY TINYMCE' in footer
       setup: editor => {
