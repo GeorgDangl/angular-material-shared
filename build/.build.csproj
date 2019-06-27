@@ -16,7 +16,7 @@
     </PackageReference>
     <PackageReference Include="Nuke.Common" Version="0.20.1" />
     <PackageReference Include="Nuke.GitHub" Version="1.5.0" />
-    <PackageReference Include="Nuke.Azure.KeyVault" Version="0.4.5-beta0002" />
+    <PackageReference Include="Nuke.Azure.KeyVault" Version="0.5.0" />
   </ItemGroup>
 
   <ItemGroup>
