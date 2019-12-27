@@ -104,7 +104,10 @@ class Build : NukeBuild
         .DependsOn(NgLibraryBuild)
         .Executes(() =>
         {
-            Npm("publish --access=public", NgAppDir / "dist" / "angular-material-shared");
+            var npmTag = GitVersion.BranchName.Equals("master") || GitVersion.BranchName.Equals("origin/master")
+            ? "latest"
+            : "next";
+            Npm($"publish --access=public --tag={npmTag}", NgAppDir / "dist" / "angular-material-shared");
         });
 
     Target PublishGitHubRelease => _ => _
