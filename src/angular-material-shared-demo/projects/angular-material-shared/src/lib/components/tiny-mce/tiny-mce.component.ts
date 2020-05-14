@@ -1,4 +1,7 @@
-import { Component, AfterViewInit, OnDestroy, forwardRef, Inject, NgZone, Input } from '@angular/core';
+import { Component, forwardRef, Inject, NgZone, Input } from '@angular/core';
+// 'AfterViewInit' and 'OnDestroy' should be placed in a separate import to
+// mitigate this bug: https://github.com/ng-packagr/ng-packagr/issues/1543#issuecomment-593873874
+import { AfterViewInit, OnDestroy } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { GuidGenerator } from '../../utils/guid-generator';
 
