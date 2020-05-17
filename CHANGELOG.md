@@ -3,7 +3,7 @@
 All notable changes to **angular-material-shared** are documented here.
 
 ## v1.3.0:
-- Update Angulat to v9.1
+- Update Angular to v9.1
 
 ## v1.2.1:
 - Remove invalid dependency to '@angular/http'. This is deprecated since version 8 of Angular
