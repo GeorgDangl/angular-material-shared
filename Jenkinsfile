@@ -20,7 +20,7 @@ pipeline {
 					recordIssues(
 						tools: [
 							taskScanner(
-								excludePattern: '**/*node_modules/**/*', 
+								excludePattern: '**/*node_modules/**/*, **/*tinymce-langs/**/*', 
 								highTags: 'HACK, FIXME', 
 								ignoreCase: true, 
 								includePattern: '**/*.cs, **/*.g4, **/*.ts, **/*.js', 
