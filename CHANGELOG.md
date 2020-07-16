@@ -2,6 +2,9 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v1.4.0:
+- Update Angular to v10
+
 ## v1.3.0:
 - Update Angular to v9.1
 
