@@ -17,18 +17,15 @@ pipeline {
             }
             post {
                 always {
-                    openTasks(
-                       canComputeNew: false,
-                       defaultEncoding: '',
-                       excludePattern: 'src/angular-material-shared-demo/node_modules/**/*',
-                       healthy: '',
-                       high: 'HACK, FIXME',
-                       ignoreCase: true,
-                       low: '',
-                       normal: 'TODO',
-                       pattern: '**/*.cs, **/*.g4, **/*.ts',
-                       unHealthy: '')
-                       xunit testTimeMargin: '3000', thresholdMode: 1, thresholds: [failed(), skipped()], tools: [JUnit(deleteOutputFiles: true, failIfNotNew: true, pattern: '**/*karma-results.xml', skipNoTestFiles: false, stopProcessingIfError: true)]
+					recordIssues(
+						tools: [
+							taskScanner(
+								excludePattern: '**/*node_modules/**/*, **/*tinymce-langs/**/*', 
+								highTags: 'HACK, FIXME', 
+								ignoreCase: true, 
+								includePattern: '**/*.cs, **/*.g4, **/*.ts, **/*.js', 
+								normalTags: 'TODO')
+							]) 
                 }
             }
         }
@@ -44,6 +41,7 @@ pipeline {
                 notifyEveryUnstableBuild: true,
                 recipients: "georg@dangl.me",
                 sendToIndividuals: true])
+            cleanWs()
         }
     }
 }
