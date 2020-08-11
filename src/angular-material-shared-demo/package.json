@@ -28,7 +28,7 @@
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2",
     "@angular/cdk": "^10.0.2",
-    "tinymce": "5.2.2",
+    "tinymce": "5.4.0",
     "tinymce-i18n": "20.4.4"
   },
   "devDependencies": {
