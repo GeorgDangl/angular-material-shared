@@ -17,12 +17,8 @@ import { RouterModule } from '@angular/router';
     AngularMaterialSharedModule
   ],
   providers: [{
-    provide: 'TINYMCE_SKIN_URL',
-    useValue: '/assets/skins/ui/oxide'
-  },
-  {
-    provide: 'TINYMCE_CONTENT_CSS_URL',
-    useValue: '/assets/skins/ui/oxide/content.min.css'
+    provide: 'TINYMCE_BASE_URL',
+    useValue: '/assets/tinymce-assets'
   }],
   bootstrap: [AppComponent]
 })

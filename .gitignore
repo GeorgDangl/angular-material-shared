@@ -1,3 +1,7 @@
 .vs/
 build/bin/
 build/obj/
+
+.tmp/
+
+src/angular-material-shared-demo/src/assets/tinymce-assets/
