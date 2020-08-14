@@ -2,7 +2,12 @@
   "name": "angular-material-shared-demo",
   "version": "0.0.0",
   "scripts": {
-    "postinstall": "cd .. && cd .. && build.cmd CopyTinyMceAssetsToDemoApp",
+    "postinstall": "npm run copy:icons && npm run copy:plugins && npm run copy:skins && npm run copy:themes && npm run copy:langs",
+    "copy:icons": "xcopy /I /E /Y node_modules\\tinymce\\icons src\\assets\\tinymce-assets\\icons",
+    "copy:plugins": "xcopy /I /E /Y node_modules\\tinymce\\plugins src\\assets\\tinymce-assets\\plugins",
+    "copy:skins": "xcopy /I /E /Y node_modules\\tinymce\\skins src\\assets\\tinymce-assets\\skins",
+    "copy:themes": "xcopy /I /E /Y node_modules\\tinymce\\themes src\\assets\\tinymce-assets\\themes",
+    "copy:langs": "xcopy /I /E /Y node_modules\\tinymce-i18n\\langs5 src\\assets\\tinymce-assets\\langs",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -51,7 +56,7 @@
     "karma-junit-reporter": "~1.2.0",
     "ng-packagr": "^10.0.0",
     "protractor": "~7.0.0",
-    "puppeteer": "^1.17.0",
+    "puppeteer": "^5.2.1",
     "ts-node": "~7.0.1",
     "tslint": "~6.1.0",
     "typescript": "~3.9.6"

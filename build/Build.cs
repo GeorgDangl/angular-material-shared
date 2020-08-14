@@ -90,11 +90,11 @@ class Build : NukeBuild
         {
             if (IsLocalBuild)
             {
-                Npm("i --ignore-scripts", NgAppDir);
+                Npm("i", NgAppDir);
             }
             else
             {
-                Npm("ci --ignore-scripts", NgAppDir);
+                Npm("ci", NgAppDir);
             }
             Npm("run build:library", NgAppDir);
             Npm($"version {GitVersion.NuGetVersion}", NgAppDir / "dist" / "angular-material-shared");
