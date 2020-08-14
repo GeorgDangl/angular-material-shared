@@ -10,19 +10,15 @@ describe('TinyMceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TinyMceComponent ],
+      declarations: [TinyMceComponent],
       providers: [
         {
-          provide: 'TINYMCE_SKIN_URL',
-          useValue: 'injected/url.css'
-        },
-        {
-          provide: 'TINYMCE_CONTENT_CSS_URL',
-          useValue: 'injected/content.css'
+          provide: 'TINYMCE_BASE_URL',
+          useValue: 'tinymce-assets'
         }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -46,12 +42,8 @@ describe('TinyMceComponent', () => {
     expect(tinyMceInitParam).toBeTruthy();
   });
 
-  it('should have injected correct url for skin', () => {
-    expect(tinyMceInitParam.skin_url).toEqual('injected/url.css');
-  });
-
-  it('should have injected correct url for content', () => {
-    expect(tinyMceInitParam.content_css).toEqual('injected/content.css');
+  it('should have injected correct base url', () => {
+    expect(tinyMceInitParam.base_url).toEqual('tinymce-assets');
   });
 
   it('should call remove on destroy', () => {
