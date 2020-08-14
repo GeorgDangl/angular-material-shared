@@ -7,13 +7,14 @@ using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.Npm.NpmTasks;
 using static Nuke.GitHub.GitHubTasks;
 using static Nuke.Common.ChangeLog.ChangelogTasks;
-using Nuke.Azure.KeyVault;
 using System.Linq;
 using Nuke.GitHub;
 using System;
 using Nuke.Common.ProjectModel;
 using System.Threading.Tasks;
 using Nuke.Common.Utilities.Collections;
+using Nuke.Common.Tools.AzureKeyVault.Attributes;
+using Nuke.Common.IO;
 
 class Build : NukeBuild
 {
