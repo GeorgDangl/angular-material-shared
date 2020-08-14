@@ -47,19 +47,16 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };
 
-  constructor(@Inject('TINYMCE_SKIN_URL') private skinUrl: string,
-    @Inject('TINYMCE_CONTENT_CSS_URL') private contentCssUrl: string,
+  constructor(@Inject('TINYMCE_BASE_URL') private baseUrl: string,
     private ngZone: NgZone) {
-    }
+  }
 
   ngAfterViewInit() {
     tinymce.init({
       selector: '#' + this.elementId,
       plugins: ['link', 'paste', 'table', 'image', 'code'],
-      skin_url: this.skinUrl,
-      content_css: this.contentCssUrl,
       language: this.tinyMceLanguageCode,
-      language_url: this.tinyMceLanguageUrl,
+      base_url: this.baseUrl,
       branding: false, // To disable 'POWERED BY TINYMCE' in footer
       setup: editor => {
         editor.on('change keyup', () => {
@@ -98,7 +95,11 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
     this.onTouchedCallback = fn;
   }
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    if (isDisabled) {
+      this.editor.setMode('readonly');
+    } else {
+      this.editor.setMode('design');
+    }
   }
 
 }

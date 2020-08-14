@@ -68,42 +68,34 @@ A rich-text WYSIWYG editor is available as `dangl-tiny-mce` component. This one 
       "../node_modules/tinymce/plugins/code/plugin.js"
     ]
 
-Additionally, TinyMCE must load skins at runtime and requires the path to it. You can inject it in your `AppModule`:
+Additionally, TinyMCE must load skins and other assets at runtime and requires the path to it. You can inject it in your `AppModule`:
 
     providers: [
       {
-        provide: 'TINYMCE_SKIN_URL',
-        useValue: tinyMceSkinUrl // e.g. '/assets/skins/ui/oxide'
-      },
-      {
-        provide: 'TINYMCE_CONTENT_CSS_URL',
-        useValue: tinyMceContentCssUrl // e.g. '/assets/skins/ui/oxide/content.min.css'
+        provide: 'TINYMCE_BASE_URL',
+        useValue: tinyMceBaseUrl // e.g. '/assets/tinymce-assets'
       }
     ]
 
-Depending on your setup, you can copy these skins via a `postinstall` script in `package.json` to a folder in your app:
+Depending on your setup, you can copy these assets via a `postinstall` script in `package.json` to a folder in your app:
 
-    "postinstall": "xcopy /I /E /Y node_modules\\tinymce\\skins src\\assets\\skins"
+    "postinstall": "xcopy /I /E /Y node_modules\\@dangl\\angular-material-shared\\tinymce-assets src\\assets\\tinymce-assets"
 
 Because the paths might be dependent on your environment, you can use the following helper:
 
     import { environment } from '../environments/environment';
 
-    const tinyMceSkinUrl = environment.production
-      ? '/dist/assets/skins/ui/oxide'
-      : '/assets/skins/ui/oxide';
+    const tinyMceBaseUrl = environment.production
+      ? '/dist/assets/tinymce-assets'
+      : '/assets/tinymce-assets';
 
 #### TinyMCE Localization / i18n
 
 By default, the TinyMCE editors language is English. You can include other languages as well. This package includes all the language files. To use them, the following must be done:
 
-  1. The language files should be available in your assets folder (or any other accessible location). You can use a `postinstall` script to copy them, just as with the regular assets:  
+  1. Supply the url to the language file and the language code to the component:
 
-    "postinstall": "xcopy /I /E /Y node_modules\\tinymce\\skins src\\assets\\skins&&xcopy /I /E /Y node_modules\\@dangl\\angular-material-shared\\tinymce-langs src\\assets\\tinymce-langs"
-
-  2. Supply the url to the language file and the language code to the component:
-
-    <dangl-tiny-mce tinyMceLanguageUrl="/assets/tinymce-langs/de.js" tinyMceLanguageCode="de"></dangl-tiny-mce>
+    <dangl-tiny-mce tinyMceLanguageCode="de"></dangl-tiny-mce>
 
 Available languages can be found here: https://www.tiny.cloud/get-tiny/language-packages/
 
