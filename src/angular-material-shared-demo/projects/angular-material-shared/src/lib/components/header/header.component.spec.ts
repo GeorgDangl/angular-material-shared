@@ -1,10 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -12,10 +12,10 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
-      imports: [ RouterTestingModule, MatIconModule, MatToolbarModule, MatButtonModule ]
+      declarations: [HeaderComponent],
+      imports: [RouterTestingModule, MatIconModule, MatToolbarModule, MatButtonModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
