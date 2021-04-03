@@ -20,6 +20,14 @@
     }
 }
 
+.dangl-header-logo {
+    max-height: 64px;
+    @media (max-width: 599px) {
+        max-height: 56px;
+    }
+    vertical-align: middle;
+}
+
 mat-toolbar-row {
     padding-left: 0;
 }

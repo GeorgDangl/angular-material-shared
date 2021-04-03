@@ -1,5 +1,6 @@
 # angular-material-shared
-Shared components & styles to be used in Angular Material apps.  
+
+Shared components & styles to be used in Angular Material apps.
 
 ## Usage
 
@@ -38,6 +39,10 @@ To access color variables, you can add this import to any file:
 The `dangl-header` component can display a common header in all Dangl**IT** apps. It additionally supports to display an information if it is in a preview environment. The header supports right-aligned content via a projected `ng-content`.
 
 You can optionally specify the logo initials by setting `logoInitials="GD"`. They default to `GD`. You can disable the logo by setting `[logoInitials]="null"`.
+
+#### Header Logo
+
+By setting the `iconUrl` value on the `dangl-header`, you can optionally specify an image to be displayed in the header.
 
 ### Footer
 
@@ -93,7 +98,8 @@ Because the paths might be dependent on your environment, you can use the follow
 
 By default, the TinyMCE editors language is English. You can include other languages as well. This package includes all the language files. To use them, the following must be done:
 
-  1. Supply the url to the language file and the language code to the component:
+1. Supply the url to the language file and the language code to the component:
+
 
     <dangl-tiny-mce tinyMceLanguageCode="de"></dangl-tiny-mce>
 
