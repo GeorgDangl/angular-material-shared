@@ -1,9 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { AngularMaterialSharedModule } from '../../projects/angular-material-shared/src/public_api';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialSharedModule } from 'angular-material-shared';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
