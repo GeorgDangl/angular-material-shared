@@ -2,6 +2,12 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.1.0:
+- Add option to embed logo in header
+
+## v2.0.0:
+- Update tinyMCE and change handling of embedding tinyMCE assets
+
 ## v1.4.0:
 - Update Angular to v10
 
