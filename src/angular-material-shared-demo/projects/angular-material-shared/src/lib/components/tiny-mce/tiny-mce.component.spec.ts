@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TinyMceComponent } from './tiny-mce.component';
 
@@ -8,7 +8,7 @@ describe('TinyMceComponent', () => {
   let tinyMceInitParam: any;
   let tinyMceRemoveCalled = false;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TinyMceComponent],
       providers: [
