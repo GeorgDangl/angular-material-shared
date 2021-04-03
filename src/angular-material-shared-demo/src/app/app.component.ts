@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FooterOptions } from 'angular-material-shared';
+import { FooterOptions } from '../../projects/angular-material-shared/src/public_api';
 
 @Component({
   selector: 'app-root',

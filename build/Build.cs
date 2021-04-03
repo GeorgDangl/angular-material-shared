@@ -118,6 +118,8 @@ class Build : NukeBuild
 
     Target NgLibraryPublish => _ => _
         .DependsOn(NgLibraryBuild)
+        .OnlyWhenDynamic(() => Nuke.Common.CI.Jenkins.Jenkins.Instance == null
+            || Nuke.Common.CI.Jenkins.Jenkins.Instance.ChangeId == null)
         .Executes(() =>
         {
             var npmTag = GitVersion.BranchName.Equals("master") || GitVersion.BranchName.Equals("origin/master")
