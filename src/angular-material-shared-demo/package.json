@@ -33,7 +33,7 @@
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2",
     "@angular/cdk": "^11.2.7",
-    "tinymce": "5.6.0",
+    "tinymce": "5.7.1",
     "tinymce-i18n": "20.4.4"
   },
   "devDependencies": {
