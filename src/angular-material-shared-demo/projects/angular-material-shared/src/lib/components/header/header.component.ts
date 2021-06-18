@@ -1,11 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from "@angular/core";
 
 @Component({
   selector: "dangl-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnChanges {
   @Input() prefix: string;
   @Input() postfix: string;
   @Input() showMenuButton = false;
@@ -18,14 +26,30 @@ export class HeaderComponent {
   @Input() preReleaseLiveSiteLink: string;
 
   @Input() set showPrerelease(val: boolean) {
-    this._showPrerelease = val ? this.checkPrereleaseData() : false;
+    if (val) {
+      this._forceDisablePrereleaseHeader = false;
+      this._showPrerelease = this.checkPrereleaseData();
+    } else {
+      this._forceDisablePrereleaseHeader = true;
+      this._showPrerelease = false;
+    }
   }
 
   get showPrerelease() {
+    if (this._forceDisablePrereleaseHeader) {
+      return false;
+    }
     return this._showPrerelease;
   }
 
   private _showPrerelease: boolean;
+  private _forceDisablePrereleaseHeader = false;
+
+  ngOnChanges(_: SimpleChanges): void {
+    if (!this._forceDisablePrereleaseHeader) {
+      this._showPrerelease = this.checkPrereleaseData();
+    }
+  }
 
   checkPrereleaseData(): boolean {
     let isShowing =
