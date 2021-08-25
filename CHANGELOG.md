@@ -2,6 +2,9 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.2.0:
+- Update Angular to v12
+
 ## v2.1.0:
 - Add option to embed logo in header
 

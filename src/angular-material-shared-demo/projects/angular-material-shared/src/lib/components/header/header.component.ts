@@ -1,38 +1,76 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from "@angular/core";
 
 @Component({
-  selector: 'dangl-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: "dangl-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
-export class HeaderComponent implements OnInit {
-
+export class HeaderComponent implements OnChanges {
   @Input() prefix: string;
   @Input() postfix: string;
   @Input() showMenuButton = false;
-  @Input() logoInitials = 'GD';
+  @Input() logoInitials = "GD";
   @Input() iconUrl: string;
   @Output() menuButtonClicked = new EventEmitter();
 
   @Input() preReleaseVersion: string;
   @Input() preReleaseBuildDate: Date;
   @Input() preReleaseLiveSiteLink: string;
-  showPrerelease = false;
 
-  ngOnInit() {
-    this.showPrerelease = this.preReleaseVersion != null
-      || this.preReleaseBuildDate != null
-      || this.preReleaseLiveSiteLink != null;
-    if (this.preReleaseVersion != null && typeof (Storage) !== 'undefined') {
-      this.showPrerelease = this.preReleaseVersion !== localStorage.getItem('dangl_preview_notice_header_hide_version');
+  @Input() set showPrerelease(val: boolean) {
+    if (val) {
+      this._forceDisablePrereleaseHeader = false;
+      this._showPrerelease = this.checkPrereleaseData();
+    } else {
+      this._forceDisablePrereleaseHeader = true;
+      this._showPrerelease = false;
     }
+  }
+
+  get showPrerelease() {
+    if (this._forceDisablePrereleaseHeader) {
+      return false;
+    }
+    return this._showPrerelease;
+  }
+
+  private _showPrerelease: boolean;
+  private _forceDisablePrereleaseHeader = false;
+
+  ngOnChanges(_: SimpleChanges): void {
+    if (!this._forceDisablePrereleaseHeader) {
+      this._showPrerelease = this.checkPrereleaseData();
+    }
+  }
+
+  checkPrereleaseData(): boolean {
+    let isShowing =
+      this.preReleaseVersion != null ||
+      this.preReleaseBuildDate != null ||
+      this.preReleaseLiveSiteLink != null;
+    if (this.preReleaseVersion != null && typeof Storage !== "undefined") {
+      isShowing =
+        this.preReleaseVersion !==
+        localStorage.getItem("dangl_preview_notice_header_hide_version");
+    }
+    return isShowing;
   }
 
   hideForCurrentVersion() {
-    if (typeof (Storage) !== 'undefined') {
-      localStorage.setItem('dangl_preview_notice_header_hide_version', this.preReleaseVersion);
+    if (typeof Storage !== "undefined") {
+      localStorage.setItem(
+        "dangl_preview_notice_header_hide_version",
+        this.preReleaseVersion
+      );
       this.showPrerelease = false;
     }
   }
-
 }
