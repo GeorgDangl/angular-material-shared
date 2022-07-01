@@ -2,14 +2,14 @@
   "name": "@dangl/angular-material-shared",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/animations": "^14.0.4",
-    "@angular/common": "^14.0.4",
-    "@angular/compiler": "^14.0.4",
-    "@angular/router": "^14.0.4",
-    "@angular/core": "^14.0.4",
-    "@angular/forms": "^14.0.4",
-    "@angular/material": "^14.0.4",
-    "@angular/cdk": "^14.0.4"
+    "@angular/animations": ">=14.0.4",
+    "@angular/common": ">=14.0.4",
+    "@angular/compiler": ">=14.0.4",
+    "@angular/router": ">=14.0.4",
+    "@angular/core": ">=14.0.4",
+    "@angular/forms": ">=14.0.4",
+    "@angular/material": ">=14.0.4",
+    "@angular/cdk": ">=14.0.4"
   },
   "dependencies": {
     "tslib": "^2.3.1"
