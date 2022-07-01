@@ -2,6 +2,10 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.3.1:
+
+- The Angular client was updated to use any Angular version at v14 or upwards
+
 ## v2.3.0:
 
 - Update Angular to v14
