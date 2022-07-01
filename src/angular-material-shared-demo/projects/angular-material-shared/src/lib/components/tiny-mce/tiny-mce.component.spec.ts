@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TinyMceComponent } from './tiny-mce.component';
 
+(window as any).global = window
+
 describe('TinyMceComponent', () => {
   let component: TinyMceComponent;
   let fixture: ComponentFixture<TinyMceComponent>;
