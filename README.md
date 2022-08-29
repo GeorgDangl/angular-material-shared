@@ -110,8 +110,7 @@ By default, the TinyMCE editors language is English. You can include other langu
 
 1. Supply the url to the language file and the language code to the component:
 
-
-    <dangl-tiny-mce tinyMceLanguageCode="de"></dangl-tiny-mce>
+   <dangl-tiny-mce tinyMceLanguageCode="de"></dangl-tiny-mce>
 
 Available languages can be found here: https://www.tiny.cloud/get-tiny/language-packages/
 
