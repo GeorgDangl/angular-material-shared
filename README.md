@@ -22,17 +22,27 @@ This package defines a common theme to be used in all Dangl**IT** apps.
 
 Add this import to your global `styles.scss` file:
 
-    @import '~@dangl/angular-material-shared/styles/material-style.scss';
+    @import '@dangl/angular-material-shared/styles/material-style.scss';
 
 To access color variables, you can add this import to any file:
 
-    @import '~@dangl/angular-material-shared/styles/material-variables.scss';
+    @import '@dangl/angular-material-shared/styles/material-variables.scss';
     // Provides the following colors:
     $color-primary: mat-color($dangl-app-primary);
     $color-accent:  mat-color($dangl-app-accent);
     $color-warn:    mat-color($dangl-app-warn);
     $color-dark: #3b4c55;
     $color-light: #bdbdbd;
+
+### Errors During SCSS Import
+
+Since Angular 13, importing styles via the SASS-Loaded from `node_modules` has been disabled, so you need to update the `angular.json` file with the following snippet at the `projects:PROJECT_NAME:architect:build:options` path:
+
+```json
+"stylePreprocessorOptions": {
+  "includePaths": ["./node_modules"]
+}
+```
 
 ### Header
 
