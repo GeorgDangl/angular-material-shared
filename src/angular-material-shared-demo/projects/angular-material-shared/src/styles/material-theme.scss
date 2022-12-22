@@ -25,3 +25,4 @@
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-legacy-component-themes($dangl-app-theme);
+@include mat.button-color($dangl-app-theme);
