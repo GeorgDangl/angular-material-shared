@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
-    AngularMaterialSharedModule
+    AngularMaterialSharedModule,
+    MatButtonModule
   ],
   providers: [{
     provide: 'TINYMCE_BASE_URL',
