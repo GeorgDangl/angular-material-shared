@@ -10,3 +10,6 @@
 @import './partials/side-navbar.scss';
 @import './partials/footer.scss';
 @import './partials/highlights.scss';
+.mat-primary .mdc-button__label {
+  color: #fff;
+}
