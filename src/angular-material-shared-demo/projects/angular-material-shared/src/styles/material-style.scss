@@ -17,6 +17,9 @@
 // Cyan 600
 // See here for more information:
 // https://github.com/angular/components/issues/26056
-.mat-primary .mdc-button__label {
-  color: #fff;
+.mat-primary {
+  .mdc-button__label,
+  &.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
+    color: #fff;
+  }
 }
