@@ -52,3 +52,8 @@ mat-toolbar-row {
 .toolbar-spacer {
   flex: 1 1 auto;
 }
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
