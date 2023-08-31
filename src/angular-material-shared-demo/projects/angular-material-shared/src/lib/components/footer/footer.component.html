@@ -32,5 +32,19 @@
         >{{ legalNoticeText }}</a
       >
     </ng-template>
+    <ng-template [ngIf]="showPrivacy">
+      -
+      <a *ngIf="!usePrivaceCallback" [routerLink]="privacyLink">{{
+        privacyText
+      }}</a>
+      <a
+        href="javascript:void(0)"
+        *ngIf="usePrivaceCallback"
+        (click)="privacyCallback.next(null)"
+        >{{ privacyText }}</a
+      >
+    </ng-template>
+    &nbsp;
+    <ng-content></ng-content>
   </p>
 </footer>
