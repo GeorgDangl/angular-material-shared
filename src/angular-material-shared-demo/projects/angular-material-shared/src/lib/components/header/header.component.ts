@@ -3,21 +3,20 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges,
-} from "@angular/core";
+} from '@angular/core';
 
 @Component({
-  selector: "dangl-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.scss"],
+  selector: 'dangl-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnChanges {
   @Input() prefix: string;
   @Input() postfix: string;
   @Input() showMenuButton = false;
-  @Input() logoInitials = "GD";
+  @Input() logoInitials = 'GD';
   @Input() iconUrl: string;
   @Output() menuButtonClicked = new EventEmitter();
 
