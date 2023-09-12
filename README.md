@@ -34,6 +34,18 @@ To access color variables, you can add this import to any file:
     $color-dark: #3b4c55;
     $color-light: #bdbdbd;
 
+### Fonts
+
+The package also includes the `Roboto` font, which is the default font for Angular Material. To use it, add this import to your global `styles.scss` file:
+
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
+
+### Icons
+
+The package includes the `Material Icons` font. To use it, add this import to your global `styles.scss` file:
+
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 ### Errors During SCSS Import
 
 Since Angular 13, importing styles via the SASS-Loaded from `node_modules` has been disabled, so you need to update the `angular.json` file with the following snippet at the `projects:PROJECT_NAME:architect:build:options` path:

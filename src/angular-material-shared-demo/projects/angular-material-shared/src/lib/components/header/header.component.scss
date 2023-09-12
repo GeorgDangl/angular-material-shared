@@ -14,8 +14,15 @@
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
+    padding-top: 5px;
     a {
       text-decoration: underline;
+    }
+
+    .btn-wrap {
+      button {
+        margin:1px;
+      }
     }
   }
 }
@@ -42,10 +49,18 @@ mat-toolbar-row {
   min-width: auto;
   width: 52px;
   mat-icon {
+    font-size: 1.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
     transform: scale(1.25);
   }
 }
 
 .toolbar-spacer {
   flex: 1 1 auto;
+}
+
+.warn-message {
+  display: flex;
+  align-items: center;
 }

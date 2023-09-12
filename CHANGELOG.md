@@ -2,6 +2,11 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.4.0:
+
+- The Angular client was updated to use any Angular version at v14 or upwards
+- Google Fonts and Icons are no longer automatically loaded in the library, but need to be imported separately in the consuming app
+
 ## v2.3.2:
 
 - Documentation updates

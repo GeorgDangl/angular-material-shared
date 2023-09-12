@@ -27,6 +27,7 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
   elementId = GuidGenerator.generatePseudoRandomGuid();
   editor: any;
   private _editorContent: string;
+  private _disabled = false;
   get editorContent(): string {
     return this._editorContent;
   }
@@ -69,6 +70,7 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
           editor.setContent(this.editorContent);
         }
         this.editor = editor;
+        this.setDisabledState(this._disabled)
       }
     });
   }
@@ -95,6 +97,10 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueA
     this.onTouchedCallback = fn;
   }
   setDisabledState?(isDisabled: boolean): void {
+    this._disabled = isDisabled;
+    if(!this.editor) {
+      return;
+    }
     if (isDisabled) {
       this.editor.setMode('readonly');
     } else {
