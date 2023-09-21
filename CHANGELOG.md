@@ -2,6 +2,10 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.4.1:
+
+- Fixed a display bug in the height of the prerelease notice banner
+
 ## v2.4.0:
 
 - The Angular client was updated to use any Angular version at v14 or upwards
