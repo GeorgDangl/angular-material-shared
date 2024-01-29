@@ -2,6 +2,10 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.5.0:
+
+- Update Angular to v17
+
 ## v2.4.1:
 
 - Fixed a display bug in the height of the prerelease notice banner
