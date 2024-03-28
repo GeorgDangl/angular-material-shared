@@ -12,7 +12,7 @@ describe('TinyMceComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TinyMceComponent],
+      imports: [TinyMceComponent],
       providers: [
         {
           provide: 'TINYMCE_BASE_URL',
