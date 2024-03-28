@@ -17,7 +17,8 @@ declare var tinymce: any;
       useExisting: forwardRef(() => TinyMceComponent),
       multi: true,
     }
-  ]
+  ],
+  standalone: true
 })
 export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueAccessor {
 
