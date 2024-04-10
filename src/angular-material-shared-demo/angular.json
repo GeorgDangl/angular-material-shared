@@ -26,13 +26,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/tinymce/tinymce.min.js",
-              "node_modules/tinymce/themes/silver/theme.min.js",
-              "node_modules/tinymce/plugins/link/plugin.min.js",
-              "node_modules/tinymce/plugins/paste/plugin.min.js",
-              "node_modules/tinymce/plugins/table/plugin.min.js",
-              "node_modules/tinymce/plugins/image/plugin.min.js",
-              "node_modules/tinymce/plugins/code/plugin.min.js"
+              "node_modules/tinymce/tinymce.min.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
