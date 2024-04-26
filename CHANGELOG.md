@@ -2,6 +2,10 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.6.1:
+
+- The `@tinymce/tinymce-angular` dependency was added to the package
+
 ## v2.6.0:
 
 - tinymce was updated to v7
