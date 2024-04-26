@@ -77,7 +77,7 @@ class Build : NukeBuild
             }
         }
 
-        var tinyMceAssetFolders = new[] { "icons", "plugins", "skins", "themes" };
+        var tinyMceAssetFolders = new[] { "icons", "plugins", "skins", "themes", "models" };
         foreach (var tinyMceAssetFolder in tinyMceAssetFolders)
         {
             CopyDirectoryRecursively(NgAppDir / "node_modules" / "tinymce" / tinyMceAssetFolder, TinyMceAssetsDirectory / tinyMceAssetFolder);
