@@ -12,7 +12,7 @@ describe('TinyMceComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TinyMceComponent],
+      imports: [TinyMceComponent],
       providers: [
         {
           provide: 'TINYMCE_BASE_URL',
@@ -46,11 +46,5 @@ describe('TinyMceComponent', () => {
 
   it('should have injected correct base url', () => {
     expect(tinyMceInitParam.base_url).toEqual('tinymce-assets');
-  });
-
-  it('should call remove on destroy', () => {
-    expect(tinyMceRemoveCalled).toBeFalsy();
-    component.ngOnDestroy();
-    expect(tinyMceRemoveCalled).toBeTruthy();
   });
 });

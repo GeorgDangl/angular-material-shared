@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CommonModule } from '@angular/common';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -12,8 +13,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
-      imports: [RouterTestingModule, MatIconModule, MatToolbarModule, MatButtonModule]
+      imports: [HeaderComponent]
     })
       .compileComponents();
   }));
