@@ -2,6 +2,10 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.6.0:
+
+- tinymce was updated to v7
+
 ## v2.5.0:
 
 - Update Angular to v17
