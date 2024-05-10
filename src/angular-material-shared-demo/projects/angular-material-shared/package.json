@@ -11,7 +11,8 @@
     "@angular/material": ">=17.0.4",
     "@angular/router": ">=17.0.8",
     "@tinymce/tinymce-angular": "^8.0.0",
-    "tinymce": "^7.1.0"
+    "tinymce": "^7.1.0",
+    "tinymce-i18n": "^24.5.8"
   },
   "dependencies": {
     "tslib": ">=2.3.1"

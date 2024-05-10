@@ -5,5 +5,5 @@
   "lib": {
     "entryFile": "src/public_api.ts"
   },
-  "allowedNonPeerDependencies": ["tinymce","@tinymce/tinymce-angular"]
+  "allowedNonPeerDependencies": ["tinymce","@tinymce/tinymce-angular","tinymce-i18n"]
 }
