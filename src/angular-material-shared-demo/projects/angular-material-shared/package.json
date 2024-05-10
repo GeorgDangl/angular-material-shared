@@ -3,14 +3,15 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/animations": ">=17.0.8",
+    "@angular/cdk": ">=17.0.4",
     "@angular/common": ">=17.0.8",
     "@angular/compiler": ">=17.0.8",
-    "@angular/router": ">=17.0.8",
     "@angular/core": ">=17.0.8",
     "@angular/forms": ">=17.0.8",
     "@angular/material": ">=17.0.4",
-    "@angular/cdk": ">=17.0.4",
-    "@tinymce/tinymce-angular": "^7.0.0"
+    "@angular/router": ">=17.0.8",
+    "@tinymce/tinymce-angular": "^8.0.0",
+    "tinymce": "^7.1.0"
   },
   "dependencies": {
     "tslib": ">=2.3.1"
