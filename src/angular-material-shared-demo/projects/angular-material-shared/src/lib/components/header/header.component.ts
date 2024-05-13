@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule } from "@angular/common";
 import {
   Component,
   EventEmitter,
@@ -6,28 +6,23 @@ import {
   OnChanges,
   Output,
   SimpleChanges,
-} from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
+} from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 @Component({
-  selector: 'dangl-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: "dangl-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
   standalone: true,
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-  ]
+  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule],
 })
 export class HeaderComponent implements OnChanges {
   @Input() prefix: string;
   @Input() postfix: string;
   @Input() showMenuButton = false;
-  @Input() logoInitials = 'GD';
+  @Input() logoInitials = "GD";
   @Input() iconUrl: string;
   @Output() menuButtonClicked = new EventEmitter();
 
