@@ -1,19 +1,29 @@
-import { Component, forwardRef, Inject, NgZone, Input, OnInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { GuidGenerator } from '../../utils/guid-generator';
-import { EditorModule } from '@tinymce/tinymce-angular';
-import { RawEditorOptions, Editor } from '@tinymce/tinymce-angular/node_modules/tinymce';
+import {
+  Component,
+  forwardRef,
+  Inject,
+  NgZone,
+  Input,
+  OnInit,
+} from "@angular/core";
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
+import { GuidGenerator } from "../../utils/guid-generator";
+import { EditorModule } from "@tinymce/tinymce-angular";
+import {
+  RawEditorOptions,
+  Editor,
+} from "@tinymce/tinymce-angular/node_modules/tinymce";
 
 @Component({
-  selector: 'dangl-tiny-mce',
-  templateUrl: './tiny-mce.component.html',
-  styleUrls: ['./tiny-mce.component.scss'],
+  selector: "dangl-tiny-mce",
+  templateUrl: "./tiny-mce.component.html",
+  styleUrls: ["./tiny-mce.component.scss"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => TinyMceComponent),
       multi: true,
-    }
+    },
   ],
   standalone: true,
   imports: [EditorModule],
@@ -47,19 +57,19 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
   private onChangeCallback: (_: any) => void = () => {};
 
   constructor(
-    @Inject('TINYMCE_BASE_URL') private baseUrl: string,
+    @Inject("TINYMCE_BASE_URL") private baseUrl: string,
     private ngZone: NgZone
   ) {}
 
   ngOnInit() {
     this.init = {
-      plugins: ['link', 'table', 'image', 'code'],
+      plugins: ["link", "table", "image", "code"],
       language: this.tinyMceLanguageCode,
       base_url: this.baseUrl,
       promotion: false,
       branding: false, // To disable 'POWERED BY TINYMCE' in footer
       setup: (editor: Editor) => {
-        editor.on('change keyup', () => {
+        editor.on("change keyup", () => {
           const content = editor.getContent();
           this.editorContent = content;
         });
@@ -69,13 +79,13 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
           editor.setContent(this.editorContent);
         }
         this.editor = editor;
-        this.setDisabledState(this._disabled)
-      }
+        this.setDisabledState(this._disabled);
+      },
     };
   }
 
   writeValue(obj: any): void {
-    obj = obj || '';
+    obj = obj || "";
     this.editorContent = obj;
     if (!this.editor) {
       return;
@@ -97,9 +107,9 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
       return;
     }
     if (isDisabled) {
-      this.editor.mode.set('readonly');
+      this.editor.mode.set("readonly");
     } else {
-      this.editor.mode.set('design');
+      this.editor.mode.set("design");
     }
   }
 }
