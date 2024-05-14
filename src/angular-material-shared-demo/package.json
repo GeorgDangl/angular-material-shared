@@ -31,11 +31,9 @@
     "@angular/platform-browser": "^17.3.1",
     "@angular/platform-browser-dynamic": "^17.3.1",
     "@angular/router": "^17.3.1",
-    "@tinymce/tinymce-angular": "^7.0.0",
+    "@dangl/angular-material-shared": "^2.6.1",
     "core-js": "^3.21.0",
     "rxjs": "^7.5.5",
-    "tinymce": "^7.0.1",
-    "tinymce-i18n": "^24.3.11",
     "tslib": "^2.3.1",
     "zone.js": "~0.14.2"
   },

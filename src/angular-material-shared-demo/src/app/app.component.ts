@@ -16,15 +16,13 @@ import { FooterComponent, HeaderComponent, TinyMceComponent } from 'angular-mate
   ]
 })
 export class AppComponent {
-
   footerOptions: FooterOptions = {
-    logoInitials: 'GD',
-    copyrightUrl: 'https://www.dangl-it.com',
-    companyNameHtml: 'Dangl<strong>IT</strong> GmbH'
+    logoInitials: "GD",
+    copyrightUrl: "https://www.dangl-it.com",
+    companyNameHtml: "Dangl<strong>IT</strong> GmbH",
   };
 
   menuButtonClicked() {
-    alert('Button clicked');
+    alert("Button clicked");
   }
-
 }
