@@ -2,7 +2,7 @@ import { Component, forwardRef, Inject, NgZone, Input, OnInit } from '@angular/c
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { GuidGenerator } from '../../utils/guid-generator';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { RawEditorOptions, Editor } from '@tinymce/tinymce-angular/node_modules/tinymce';
+import { Editor, RawEditorOptions } from 'tinymce';
 
 @Component({
   selector: 'dangl-tiny-mce',
