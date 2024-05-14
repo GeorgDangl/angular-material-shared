@@ -2,7 +2,6 @@ import { Component, forwardRef, Inject, NgZone, Input, OnInit } from '@angular/c
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { GuidGenerator } from '../../utils/guid-generator';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { Editor, RawEditorOptions } from 'tinymce';
 
 @Component({
   selector: 'dangl-tiny-mce',
@@ -22,8 +21,8 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
   @Input() tinyMceLanguageCode: string;
 
   elementId = GuidGenerator.generatePseudoRandomGuid();
-  editor: Editor;
-  init: RawEditorOptions;
+  editor: any;
+  init:any;
   private _editorContent: string;
   private _disabled = false;
   get editorContent(): string {
@@ -58,13 +57,13 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
       base_url: this.baseUrl,
       promotion: false,
       branding: false, // To disable 'POWERED BY TINYMCE' in footer
-      setup: (editor: Editor) => {
+      setup: (editor: any) => {
         editor.on('change keyup', () => {
           const content = editor.getContent();
           this.editorContent = content;
         });
       },
-      init_instance_callback: (editor: Editor) => {
+      init_instance_callback: (editor: any) => {
         if (editor && this.editorContent) {
           editor.setContent(this.editorContent);
         }
