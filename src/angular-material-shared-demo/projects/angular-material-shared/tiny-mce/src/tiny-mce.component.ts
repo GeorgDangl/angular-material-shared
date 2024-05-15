@@ -59,13 +59,13 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
       base_url: this.baseUrl,
       promotion: false,
       branding: false, // To disable 'POWERED BY TINYMCE' in footer
-      setup: (editor: any) => {
+      setup: (editor: Editor) => {
         editor.on('change keyup', () => {
           const content = editor.getContent();
           this.editorContent = content;
         });
       },
-      init_instance_callback: (editor: any) => {
+      init_instance_callback: (editor: Editor) => {
         if (editor && this.editorContent) {
           editor.setContent(this.editorContent);
         }
