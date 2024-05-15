@@ -1,7 +1,8 @@
 import { Component, forwardRef, Inject, NgZone, Input, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { GuidGenerator } from '../../utils/guid-generator';
+import { GuidGenerator } from './utils/guid-generator';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { RawEditorOptions, Editor } from '@tinymce/tinymce-angular/node_modules/tinymce/tinymce';
 
 @Component({
   selector: 'dangl-tiny-mce',
@@ -21,8 +22,8 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
   @Input() tinyMceLanguageCode: string;
 
   elementId = GuidGenerator.generatePseudoRandomGuid();
-  editor: any;
-  init:any;
+  editor: Editor;
+  init:RawEditorOptions;
   private _editorContent: string;
   private _disabled = false;
   get editorContent(): string {

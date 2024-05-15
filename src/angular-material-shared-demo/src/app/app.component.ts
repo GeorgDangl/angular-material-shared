@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FooterComponent, FooterOptions, HeaderComponent,TinyMceComponent } from 'angular-material-shared';
+import { FooterComponent, FooterOptions, HeaderComponent, } from 'angular-material-shared';
+import { TinyMceComponent } from 'angular-material-shared/tiny-mce';
 
 @Component({
   selector: 'app-root',
