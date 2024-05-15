@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FooterComponent, FooterOptions, HeaderComponent, } from 'angular-material-shared';
+import { FooterComponent, FooterOptions, HeaderComponent } from 'angular-material-shared';
+import { GuidGenerator } from 'angular-material-shared/guid-generator';
 import { TinyMceComponent } from 'angular-material-shared/tiny-mce';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +16,7 @@ import { TinyMceComponent } from 'angular-material-shared/tiny-mce';
   ]
 })
 export class AppComponent {
-
+  generatedId = GuidGenerator.generatePseudoRandomGuid();
   footerOptions: FooterOptions = {
     logoInitials: 'GD',
     copyrightUrl: 'https://www.dangl-it.com',
@@ -24,7 +24,7 @@ export class AppComponent {
   };
 
   menuButtonClicked() {
-    alert('Button clicked');
+    alert(`Button clicked and ID ${this.generatedId} generated`);
   }
 
 }
