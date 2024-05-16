@@ -21,11 +21,11 @@
       "dom"
     ],
     "paths": {
-      "angular-material-shared": [
-        "dist/angular-material-shared"
+      "@dangl/angular-material-shared/*": [
+        "./projects/angular-material-shared/*",
       ],
-      "angular-material-shared/*": [
-        "dist/angular-material-shared/*"
+      "@dangl/angular-material-shared": [
+        "./projects/angular-material-shared",
       ]
     },
     "useDefineForClassFields": false
