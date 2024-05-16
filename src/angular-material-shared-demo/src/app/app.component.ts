@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FooterComponent, FooterOptions, HeaderComponent } from 'angular-material-shared';
-import { GuidGenerator } from 'angular-material-shared/guid-generator';
-import { TinyMceComponent } from 'angular-material-shared/tiny-mce';
+import { FooterComponent, FooterOptions, HeaderComponent } from '@dangl/angular-material-shared';
+import { GuidGenerator } from '@dangl/angular-material-shared/guid-generator';
+import { TinyMceComponent } from '@dangl/angular-material-shared/tiny-mce';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
