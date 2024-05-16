@@ -1,20 +1,31 @@
+
 # angular-material-shared
 
 Shared components & styles to be used in Angular Material apps.
 
+## Installation
+
+Install as a dev dependency via [npm](https://www.npmjs.com/):
+
+```bash
+npm install --save-dev  @dangl/angular-material-shared
+```
+
 ## Usage
+To use these components in an Angular app, import components to your module or component. 
 
-To use these styles in an Angular app, add this package to your project. It's published as `@dangl/angular-material-shared`.
-Then, simply import the module:
+```javascript
+import { FooterComponent, FooterOptions, HeaderComponent } from '@dangl/angular-material-shared';
+import { GuidGenerator } from '@dangl/angular-material-shared/guid-generator';
+import { TinyMceComponent } from '@dangl/angular-material-shared/tiny-mce';
+```
 
-    import { AngularMaterialSharedModule } from '@dangl/angular-material-shared';
 
 ### Demo
 
 You can run `ng serve` in the `src/angular-material-shared-demo` folder to run a
 demo locally. Make sure that the library was built first with `npm run build:library`.
 
-## Functionality
 
 ## Styles
 
@@ -123,3 +134,5 @@ Available languages can be found here: https://www.tiny.cloud/get-tiny/language-
 ### GuidGenerator
 
 The `GuidGenerator` provides a static method to create pseudo-random Guids.
+
+

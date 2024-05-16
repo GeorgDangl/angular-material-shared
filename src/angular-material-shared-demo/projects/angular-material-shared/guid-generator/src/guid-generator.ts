@@ -1,5 +1,3 @@
-// tslint:disable:no-bitwise
-
 export class GuidGenerator {
   /**
   * Taken from https://github.com/Steve-Fenton/TypeScriptUtilities/blob/master/Guid

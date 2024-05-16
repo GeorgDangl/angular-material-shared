@@ -1,0 +1,9 @@
+{
+  "lib": {
+    "entryFile": "public_api.ts"
+  },
+  "peerDependencies": {
+    "@tinymce/tinymce-angular": "^8.0.0",
+    "tinymce":"^6.8.3"
+  }
+}
