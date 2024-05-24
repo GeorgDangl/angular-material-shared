@@ -2,6 +2,10 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.7.1:
+
+- Fixed an issue where clicking the header text would not work
+
 ## v2.7.0:
 
 - The components were restructured to be standalone, and the handling of the `tinymce` dependency was changed
