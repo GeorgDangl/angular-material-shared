@@ -1,11 +1,7 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterTestingModule } from '@angular/router/testing';
-import { CommonModule } from '@angular/common';
+import { provideRouter } from '@angular/router';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -13,7 +9,8 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HeaderComponent]
+      imports: [HeaderComponent],
+      providers: [provideRouter([])]
     })
       .compileComponents();
   }));
