@@ -24,4 +24,4 @@
 // that you are using.
 // @include mat.all-legacy-component-themes($dangl-app-theme);
 @include mat.all-component-themes($dangl-app-theme);
-@include mat.typography-hierarchy(mat.define-typography-config());
+@include mat.typography-hierarchy(mat.m2-define-typography-config());
