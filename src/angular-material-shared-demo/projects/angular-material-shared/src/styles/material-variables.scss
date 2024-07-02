@@ -6,26 +6,26 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 
-$dangl-app-primary: mat.define-palette(mat.$cyan-palette, 600, 500, 700, 800);
-$dangl-app-accent:  mat.define-palette(mat.$blue-grey-palette, 500, 400, 700);
+$dangl-app-primary: mat.m2-define-palette(mat.$m2-cyan-palette, 600, 500, 700, 800);
+$dangl-app-accent:  mat.m2-define-palette(mat.$m2-blue-grey-palette, 500, 400, 700);
 
 // The warn palette is optional (defaults to red).
-$dangl-app-warn:    mat.define-palette(mat.$red-palette);
+$dangl-app-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$dangl-app-theme: mat.define-light-theme((
+$dangl-app-theme: mat.m2-define-light-theme((
  color: (
    primary: $dangl-app-primary,
    accent: $dangl-app-accent,
    warn: $dangl-app-warn,
  ),
- typography: mat.define-typography-config(),
+ typography: mat.m2-define-typography-config(),
  density: 0,
 ));
 
 // They are just exported below to be easier to use in the project
-$color-primary: mat.get-color-from-palette($dangl-app-primary);
-$color-accent:  mat.get-color-from-palette($dangl-app-accent);
-$color-warn:    mat.get-color-from-palette($dangl-app-warn);
+$color-primary: mat.m2-get-color-from-palette($dangl-app-primary);
+$color-accent:  mat.m2-get-color-from-palette($dangl-app-accent);
+$color-warn:    mat.m2-get-color-from-palette($dangl-app-warn);
 $color-dark: #3b4c55;
 $color-light: #bdbdbd;
