@@ -58,7 +58,7 @@
     "karma-junit-reporter": "^2.0.1",
     "ng-packagr": "^18.0.0",
     "protractor": "~7.0.0",
-    "puppeteer": "^16.2.0",
+    "puppeteer": "^22.13.0",
     "ts-node": "~10.2.1",
     "tslint": "~6.1.0",
     "typescript": "~5.4.5"
