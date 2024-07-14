@@ -121,6 +121,15 @@ Because the paths might be dependent on your environment, you can use the follow
       ? '/dist/assets/tinymce-assets'
       : '/assets/tinymce-assets';
 
+#### TinyMCE Dependencies
+
+If you want to use the `TinyMCE` component, you need those two dependencies as well:
+
+```
+    "tinymce": "6.8.3",
+    "@tinymce/tinymce-angular": "^8.0.0",
+```
+
 #### TinyMCE Localization / i18n
 
 By default, the TinyMCE editors language is English. You can include other languages as well. This package includes all the language files. To use them, the following must be done:

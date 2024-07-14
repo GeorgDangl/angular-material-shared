@@ -2,7 +2,12 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.7.3:
+
+- Update documentation
+
 ## v2.7.2:
+
 - Update Angular to v18
 
 ## v2.7.1:
