@@ -5,14 +5,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'dangl-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule
-  ]
+    selector: 'dangl-footer',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.scss'],
+    imports: [
+        CommonModule,
+        RouterModule
+    ]
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();

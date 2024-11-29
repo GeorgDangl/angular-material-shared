@@ -3,17 +3,16 @@ import { FooterComponent, FooterOptions, HeaderComponent } from '@dangl/angular-
 import { GuidGenerator } from '@dangl/angular-material-shared/guid-generator';
 import { TinyMceComponent } from '@dangl/angular-material-shared/tiny-mce';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  standalone: true,
-  imports: [HeaderComponent, FooterComponent, TinyMceComponent],
-  providers: [
-    {
-      provide: "TINYMCE_BASE_URL",
-      useValue: "/assets/tinymce-assets",
-    },
-  ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [HeaderComponent, FooterComponent, TinyMceComponent],
+    providers: [
+        {
+            provide: "TINYMCE_BASE_URL",
+            useValue: "/assets/tinymce-assets",
+        },
+    ]
 })
 export class AppComponent {
   generatedId = GuidGenerator.generatePseudoRandomGuid();
