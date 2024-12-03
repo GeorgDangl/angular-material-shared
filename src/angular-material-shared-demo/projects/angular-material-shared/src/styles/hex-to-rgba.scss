@@ -1,0 +1,13 @@
+@function hex-to-rgba($hex, $alpha: 1) {
+  @if type-of($hex) != 'color' {
+    @error "hex-to-rgba: $hex must be a color.";
+  }
+
+  // Extract RGB values from the HEX color
+  $red: red($hex);
+  $green: green($hex);
+  $blue: blue($hex);
+
+  // Return RGBA color
+  @return rgba($red, $green, $blue, $alpha);
+}
