@@ -1,0 +1,66 @@
+@use '@angular/material' as mat;
+@use './m3_theme-colors.scss' as dangl-theme;
+@import "./hex-to-rgba.scss";
+@import "./partials/logo.scss";
+@import "./partials/mat-toolbar.scss";
+@import "./partials/side-navbar.scss";
+@import "./partials/footer.scss";
+@import "./partials/highlights.scss";
+
+
+html {
+  @include mat.theme((
+    color: (
+        theme-type: light,
+        primary: dangl-theme.$primary-palette,
+        tertiary: dangl-theme.$tertiary-palette,
+    ),
+    typography: Roboto,
+    density: 0
+  ));
+
+}
+
+:root {
+  --color-primary: var(--mat-sys-surface);
+  --color-accent:var(--mat-sys-secondary);
+  --color-warn:var(--mat-sys-error);
+  --color-dark: #3b4c55;
+  --color-light: #bdbdbd;
+
+  @include mat.toolbar-overrides((
+    container-text-color: #ffffff,
+  ));
+
+  @include mat.fab-overrides((
+    small-container-color:var(--mat-sys-surface),
+    small-foreground-color:#ffffff,
+    small-focus-container-elevation-shadow:var(--mat-sys-surface),
+    small-hover-container-elevation-shadow:var(--mat-sys-surface),
+    small-pressed-container-elevation-shadow:var(--mat-sys-surface),
+    small-container-elevation-shadow:var(--mat-sys-surface)
+  ));
+
+  @include mat.button-overrides((
+    protected-label-text-color:#ffffff,
+  ));
+
+  .mat-warn {
+    @include mat.button-overrides((
+      filled-container-color:var(--mat-sys-error),
+    ));
+  }
+
+  .menu-button {
+    @include mat.button-overrides((
+      filled-label-text-font: 3.5rem,
+      filled-label-text-size:3.5rem,
+      outlined-outline-width:3.5rem,
+      protected-label-text-transform:scale(3.5),
+    ));
+
+  }
+}
+
+
+
