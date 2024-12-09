@@ -33,10 +33,10 @@ $color-dark: #3b4c55;
 $color-light: #bdbdbd;
 
 :root {
-  --color-primary: #{hex-to-rgba($color-primary,0.96)};
-  --color-accent: #{hex-to-rgba($color-accent,0.96)};
-  --color-warn: #{hex-to-rgba($color-warn,0.96)};
+  --color-primary: #{hex-to-rgba($color-primary,1)};
+  --color-accent: #{hex-to-rgba($color-accent,1)};
+  --color-warn: #{hex-to-rgba($color-warn,1)};
   --color-dark: #3b4c55;
   --color-light: #bdbdbd;
-  --color-primary-rgba: #{hex-to-rgba($color-primary,0.96)};
+  --color-primary-rgba: #{hex-to-rgba($color-primary,1)};
 }

@@ -28,10 +28,11 @@ mat-toolbar-row.preview-notice {
 
 .dangl-header-logo {
   max-height: 64px;
+  vertical-align: middle;
   @media (max-width: 599px) {
     max-height: 56px;
   }
-  vertical-align: middle;
+
 }
 
 mat-toolbar-row {

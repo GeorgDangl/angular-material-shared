@@ -33,17 +33,18 @@ This package defines a common theme to be used in all Dangl**IT** apps.
 
 Add this import to your global `styles.scss` file:
 
+### For using Material 2
+
     @import '@dangl/angular-material-shared/styles/material-style.scss';
 
-To access color variables, you can add this import to any file:
+### For using Material 3
 
-    @import '@dangl/angular-material-shared/styles/material-variables.scss';
-    // Provides the following colors:
-    $color-primary: mat-color($dangl-app-primary);
-    $color-accent:  mat-color($dangl-app-accent);
-    $color-warn:    mat-color($dangl-app-warn);
-    $color-dark: #3b4c55;
-    $color-light: #bdbdbd;
+    @import '@dangl/angular-material-shared/styles/m3-theme.scss';
+
+To access color variables, just use css var():
+ Example: 
+  background-color: var(--color-accent);
+ Colors: var(--color-primary), var(--color-accent) , var(--color-warn) , var(--color-dark),var(--color-light)
 
 ### Fonts
 
