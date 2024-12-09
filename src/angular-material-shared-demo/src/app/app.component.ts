@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FooterComponent, FooterOptions, HeaderComponent } from '@dangl/angular-material-shared';
 import { GuidGenerator } from '@dangl/angular-material-shared/guid-generator';
-import { TinyMceComponent } from '@dangl/angular-material-shared/tiny-mce';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {MatTabsModule} from '@angular/material/tabs';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [HeaderComponent, FooterComponent, TinyMceComponent],
+    imports: [MatTabsModule,HeaderComponent, FooterComponent,RouterOutlet, RouterLink,RouterLinkActive],
     providers: [
         {
             provide: "TINYMCE_BASE_URL",
@@ -15,6 +16,7 @@ import { TinyMceComponent } from '@dangl/angular-material-shared/tiny-mce';
     ]
 })
 export class AppComponent {
+  logoInitials ="GD"
   generatedId = GuidGenerator.generatePseudoRandomGuid();
   footerOptions: FooterOptions = {
     logoInitials: 'GD',
