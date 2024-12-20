@@ -1,27 +1,33 @@
-<dangl-header
-  [logoInitials]="null"
-  prefix="Dangl"
-  postfix=".Material"
-  (menuButtonClicked)="menuButtonClicked()"
-  [showMenuButton]="true"
->
-  <span>Partial Login</span>
-</dangl-header>
+<div class="wrapper">
+  <dangl-header
+    [logoInitials]="logoInitials"
+    prefix="Dangl"
+    postfix=".Material"
+    (menuButtonClicked)="menuButtonClicked()"
+    [showMenuButton]="true"
+  >
+    <span>Partial Login</span>
+  </dangl-header>
 
-<h1 class="title">Dangl Material Shared Library</h1>
-<p>See the README for more information.</p>
+  <h1 class="title">Dangl Material Shared Library</h1>
+  <p>See the README for more information.</p>
+<div class="app-content">
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a  mat-tab-link
+    [routerLink]="['/en']" [routerLinkActive]="'is-active'" >TinyMCE in English </a>
+    <a mat-tab-link [routerLink]="['/de']" [routerLinkActive]="'is-active'" >TinyMCE in German</a>
+  </nav>
+  <mat-tab-nav-panel #tabPanel>
+    <router-outlet></router-outlet>
+  </mat-tab-nav-panel>
+</div>
 
-<h3>TinyMCE Demo</h3>
-<dangl-tiny-mce></dangl-tiny-mce>
-
-<h3>TinyMCE in German</h3>
-<dangl-tiny-mce #tinySecond tinyMceLanguageCode="de"></dangl-tiny-mce>
-
-<dangl-footer
-  [options]="footerOptions"
-  [showLegalNotice]="true"
-  legalNoticeText="Legal Notice"
-  [showPrivacy]="true"
-  [privacyText]="'Privacy'"
->
-</dangl-footer>
+  <dangl-footer
+    [options]="footerOptions"
+    [showLegalNotice]="true"
+    legalNoticeText="Legal Notice"
+    [showPrivacy]="true"
+    [privacyText]="'Privacy'"
+  >
+  </dangl-footer>
+</div>

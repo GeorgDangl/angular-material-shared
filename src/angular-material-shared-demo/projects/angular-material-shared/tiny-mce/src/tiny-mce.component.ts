@@ -4,18 +4,17 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { GuidGenerator } from '@dangl/angular-material-shared/guid-generator';
 import { RawEditorOptions, Editor } from 'tinymce';
 @Component({
-  selector: 'dangl-tiny-mce',
-  templateUrl: './tiny-mce.component.html',
-  styleUrls: ['./tiny-mce.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TinyMceComponent),
-      multi: true,
-    }
-  ],
-  standalone: true,
-  imports: [EditorModule],
+    selector: 'dangl-tiny-mce',
+    templateUrl: './tiny-mce.component.html',
+    styleUrls: ['./tiny-mce.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => TinyMceComponent),
+            multi: true,
+        }
+    ],
+    imports: [EditorModule]
 })
 export class TinyMceComponent implements OnInit, ControlValueAccessor {
   @Input() tinyMceLanguageCode: string;

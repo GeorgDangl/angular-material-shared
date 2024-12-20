@@ -1,13 +1,11 @@
-@import "../../../styles/material-variables.scss";
-
 .header-divider {
-  background-color: $color-dark;
+  background-color: var(--color-dark);
   height: 12px;
 }
 
 mat-toolbar-row.preview-notice {
   height: auto;
-  background-color: $color-warn;
+  background-color: var(--color-warn);
   display: flex;
   flex-direction: column;
   .preview-row {
@@ -30,10 +28,11 @@ mat-toolbar-row.preview-notice {
 
 .dangl-header-logo {
   max-height: 64px;
+  vertical-align: middle;
   @media (max-width: 599px) {
     max-height: 56px;
   }
-  vertical-align: middle;
+
 }
 
 mat-toolbar-row {
@@ -49,6 +48,9 @@ mat-toolbar-row {
   margin-left: 0;
   min-width: auto;
   width: 52px;
+  background: var(--color-primary);
+  box-shadow: none !important;
+  border-radius: 0;
   mat-icon {
     font-size: 1.5rem;
     height: 1.5rem;
@@ -65,3 +67,4 @@ mat-toolbar-row {
   display: flex;
   align-items: center;
 }
+
