@@ -30,7 +30,11 @@ export class HeaderComponent implements OnChanges {
   @Input() showMenuButton = false;
   @Input() logoInitials = 'GD';
   @Input() iconUrl: string;
-  @Output() menuButtonClicked = new EventEmitter();
+  isOpenMenu = false;
+  @Input() set defaultOpenMenu(value: boolean) {
+    this.isOpenMenu = value;
+  }
+  @Output() menuButtonClicked = new EventEmitter<boolean>();
 
   @Input() preReleaseVersion: string;
   @Input() preReleaseBuildDate: Date;
@@ -83,5 +87,10 @@ export class HeaderComponent implements OnChanges {
       );
       this.showPrerelease = false;
     }
+  }
+
+  clickMenuButton() {
+    this.isOpenMenu = !this.isOpenMenu;
+    this.menuButtonClicked.emit(this.isOpenMenu);
   }
 }
