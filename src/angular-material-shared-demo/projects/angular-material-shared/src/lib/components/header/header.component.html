@@ -4,9 +4,13 @@
       mat-mini-fab
       class="menu-button"
       *ngIf="showMenuButton"
-      (click)="menuButtonClicked.next(null)"
+      (click)="clickMenuButton()"
     >
-      <mat-icon>menu</mat-icon>
+      @if (isOpenMenu) {
+        <mat-icon>clear</mat-icon>
+      } @else {
+        <mat-icon>menu</mat-icon>
+      }
     </button>
     <a routerLink="/" class="header-title" *ngIf="iconUrl">
       <img class="dangl-header-logo" [src]="iconUrl" />
