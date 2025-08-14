@@ -1,61 +1,74 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button
-      mat-mini-fab
-      class="menu-button"
-      *ngIf="showMenuButton"
-      (click)="menuButtonClicked.next(null)"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
-    <a routerLink="/" class="header-title" *ngIf="iconUrl">
-      <img class="dangl-header-logo" [src]="iconUrl" />
-    </a>
+    @if (showMenuButton) {
+      <button
+        mat-mini-fab
+        class="menu-button"
+        (click)="menuButtonClicked.next(null)"
+        >
+        <mat-icon>menu</mat-icon>
+      </button>
+    }
+    @if (iconUrl) {
+      <a routerLink="/" class="header-title">
+        <img class="dangl-header-logo" [src]="iconUrl" />
+      </a>
+    }
     <a routerLink="/" class="header-title">
       <h1>
-        <span *ngIf="logoInitials" class="gd-logo">{{ logoInitials }}</span>
-        <ng-container *ngIf="prefix || postfix">
+        @if (logoInitials) {
+          <span class="gd-logo">{{ logoInitials }}</span>
+        }
+        @if (prefix || postfix) {
           {{ prefix }}<strong>{{ postfix }}</strong>
-        </ng-container>
+        }
       </h1>
     </a>
     <span class="toolbar-spacer"></span>
     <ng-content></ng-content>
   </mat-toolbar-row>
-  <mat-toolbar-row *ngIf="showPrerelease" class="preview-notice">
-    <div class="preview-row">
-      <div class="warn-message">
-        <mat-icon>warning</mat-icon>
-        <span>This is a preview site. </span>
-      </div>
-      <a href="{{ preReleaseLiveSiteLink }}" *ngIf="preReleaseLiveSiteLink"
-        >Click here to go to the live site</a
-      >
-      <div class="btn-wrap">
-        <button
-          mat-button
-          mat-raised-button
-          color="primary"
-          (click)="showPrerelease = false"
-        >
-          OK
-        </button>
-        <button
-          mat-button
-          mat-raised-button
-          color="primary"
-          (click)="hideForCurrentVersion()"
-        >
-          Hide for this version
-        </button>
-      </div>
-    </div>
-    <div class="preview-row">
-      <span *ngIf="preReleaseVersion">Version: {{ preReleaseVersion }}</span>
-      <span *ngIf="preReleaseBuildDate"
-        >Built: {{ preReleaseBuildDate | date : "dd.MM.yyyy HH:mm" }}</span
-      >
-    </div>
-  </mat-toolbar-row>
-  <mat-toolbar-row class="header-divider"></mat-toolbar-row>
-</mat-toolbar>
+  @if (showPrerelease) {
+    <mat-toolbar-row class="preview-notice">
+      <div class="preview-row">
+        <div class="warn-message">
+          <mat-icon>warning</mat-icon>
+          <span>This is a preview site. </span>
+        </div>
+        @if (preReleaseLiveSiteLink) {
+          <a href="{{ preReleaseLiveSiteLink }}"
+            >Click here to go to the live site</a
+            >
+          }
+          <div class="btn-wrap">
+            <button
+              mat-button
+              mat-raised-button
+              color="primary"
+              (click)="showPrerelease = false"
+              >
+              OK
+            </button>
+            <button
+              mat-button
+              mat-raised-button
+              color="primary"
+              (click)="hideForCurrentVersion()"
+              >
+              Hide for this version
+            </button>
+          </div>
+        </div>
+        <div class="preview-row">
+          @if (preReleaseVersion) {
+            <span>Version: {{ preReleaseVersion }}</span>
+          }
+          @if (preReleaseBuildDate) {
+            <span
+              >Built: {{ preReleaseBuildDate | date : "dd.MM.yyyy HH:mm" }}</span
+              >
+            }
+          </div>
+        </mat-toolbar-row>
+      }
+      <mat-toolbar-row class="header-divider"></mat-toolbar-row>
+    </mat-toolbar>

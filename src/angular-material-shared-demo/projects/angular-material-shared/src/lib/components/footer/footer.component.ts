@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { FooterOptions } from '../../models/footer-options';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,9 +9,8 @@ import { RouterModule } from '@angular/router';
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.scss'],
     imports: [
-        CommonModule,
-        RouterModule
-    ]
+    RouterModule
+]
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
