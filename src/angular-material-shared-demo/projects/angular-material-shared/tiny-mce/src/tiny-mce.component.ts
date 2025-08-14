@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, Input, NgZone, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, NgZone, OnInit, inject } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { GuidGenerator } from '@dangl/angular-material-shared/guid-generator';
@@ -17,6 +17,9 @@ import { RawEditorOptions, Editor } from 'tinymce';
     imports: [EditorModule]
 })
 export class TinyMceComponent implements OnInit, ControlValueAccessor {
+  private baseUrl = inject<string>('TINYMCE_BASE_URL' as any);
+  private ngZone = inject(NgZone);
+
   @Input() tinyMceLanguageCode: string;
 
   elementId = GuidGenerator.generatePseudoRandomGuid();
@@ -43,11 +46,6 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
 
   private onTouchedCallback: () => void = () => {};
   private onChangeCallback: (_: any) => void = () => {};
-
-  constructor(
-    @Inject('TINYMCE_BASE_URL') private baseUrl: string,
-    private ngZone: NgZone
-  ) {}
 
   ngOnInit() {
     this.init = {
