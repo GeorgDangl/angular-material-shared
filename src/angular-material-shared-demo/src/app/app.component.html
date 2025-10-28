@@ -5,6 +5,9 @@
     postfix=".Material"
     (menuButtonClicked)="menuButtonClicked()"
     [showMenuButton]="true"
+    (closePreReleaseNotification)="preReleaseNotificationClosed()"
+    [showPrerelease]="true"
+    preReleaseLiveSiteLink="https://dangl-it.com"
   >
     <span>Partial Login</span>
   </dangl-header>
