@@ -1,15 +1,15 @@
 // Import theming functions
 // @import "@angular/material/theming";
 // Import your custom theme
-@import "./material-theme.scss";
+@use "./material-theme.scss";
 
-@import "./material-variables.scss";
+@use "./material-variables.scss";
 
-@import "./partials/logo.scss";
-@import "./partials/mat-toolbar.scss";
-@import "./partials/side-navbar.scss";
-@import "./partials/footer.scss";
-@import "./partials/highlights.scss";
+@use "./partials/logo.scss";
+@use "./partials/mat-toolbar.scss";
+@use "./partials/side-navbar.scss";
+@use "./partials/footer.scss";
+@use "./partials/highlights.scss";
 
 // This is required, since there's a bug in Angular Material
 // that prevents the foreground color from being correctly
