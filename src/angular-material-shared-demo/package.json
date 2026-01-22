@@ -16,7 +16,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:library": "ng-packagr -p  projects/angular-material-shared/ng-package.json && xcopy projects\\angular-material-shared\\src\\styles dist\\angular-material-shared\\styles\\ /E",
-    "test:ci": "ng test angular-material-shared --karma-config projects/angular-material-shared/karma-ci.conf.js"
+    "test:ci": "ng test angular-material-shared --no-watch --karma-config projects/angular-material-shared/karma-ci.conf.js"
   },
   "private": true,
   "dependencies": {
