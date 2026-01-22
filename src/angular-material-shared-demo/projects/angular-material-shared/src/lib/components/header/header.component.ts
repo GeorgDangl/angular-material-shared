@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  output,
   Output,
   SimpleChanges,
 } from '@angular/core';
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnChanges {
   @Input() logoInitials = 'GD';
   @Input() iconUrl: string;
   @Output() menuButtonClicked = new EventEmitter();
+  closePreReleaseNotification = output<void>();
 
   @Input() preReleaseVersion: string;
   @Input() preReleaseBuildDate: Date;
@@ -83,5 +85,10 @@ export class HeaderComponent implements OnChanges {
       );
       this.showPrerelease = false;
     }
+  }
+
+  clickOkBtn() {
+    this.showPrerelease = false;
+    this.closePreReleaseNotification.emit();
   }
 }
