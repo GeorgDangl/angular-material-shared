@@ -2,6 +2,9 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.9.0:
+- Update Angular to v21
+
 ## v2.8.0:
 
 - Update Angular to v19
