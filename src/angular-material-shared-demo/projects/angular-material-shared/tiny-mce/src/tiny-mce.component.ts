@@ -18,6 +18,7 @@ import { RawEditorOptions, Editor } from 'tinymce';
 })
 export class TinyMceComponent implements OnInit, ControlValueAccessor {
   @Input() tinyMceLanguageCode: string;
+  @Input() additionalInit: Partial<RawEditorOptions>;
 
   elementId = GuidGenerator.generatePseudoRandomGuid();
   editor: Editor;
@@ -50,9 +51,12 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
   ) {}
 
   ngOnInit() {
+    const { setup, init_instance_callback, plugins, toolbar, ...restAdditional } = this.additionalInit || {};
+    const defaultPlugins = ['link', 'table', 'image', 'code'];
+
     this.init = {
       selector:`#${this.elementId}`,
-      plugins: ['link', 'table', 'image', 'code'],
+      plugins: [...defaultPlugins, ...(Array.isArray(plugins) ? plugins : [])].filter((v, i, a) => a.indexOf(v) === i),
       language: this.tinyMceLanguageCode,
       base_url: this.baseUrl,
       promotion: false,
@@ -62,14 +66,22 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
           const content = editor.getContent();
           this.editorContent = content;
         });
+        if (setup) {
+          setup(editor);
+        }
       },
       init_instance_callback: (editor: Editor) => {
         if (editor && this.editorContent) {
           editor.setContent(this.editorContent);
         }
         this.editor = editor;
-        this.setDisabledState(this._disabled)
-      }
+        this.setDisabledState(this._disabled);
+        if (init_instance_callback) {
+          init_instance_callback(editor);
+        }
+      },
+      ...(toolbar ? { toolbar } : {}),
+      ...restAdditional,
     };
   }
 
