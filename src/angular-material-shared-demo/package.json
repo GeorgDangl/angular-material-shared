@@ -44,23 +44,16 @@
     "@angular/cli": "^21.1.1",
     "@angular/compiler-cli": "^21.1.1",
     "@angular/language-service": "^21.1.1",
-    "@types/jasmine": "^3.10.3",
-    "@types/jasminewd2": "^2.0.10",
-    "@types/node": "^20.17.10",
+    "@types/node": "^25.9.2",
+    "@vitest/coverage-v8": "^4.1.8",
     "codelyzer": "^6.0.2",
-    "jasmine-core": "^4.0.0",
-    "jasmine-spec-reporter": "^7.0.0",
-    "karma": "^6.4.0",
-    "karma-chrome-launcher": "~3.1.1",
-    "karma-coverage-istanbul-reporter": "~3.0.3",
-    "karma-jasmine": "^5.1.0",
-    "karma-jasmine-html-reporter": "^2.0.0",
-    "karma-junit-reporter": "^2.0.1",
+    "jsdom": "^29.1.1",
     "ng-packagr": "^21.0.0",
     "protractor": "~7.0.0",
     "puppeteer": "^22.15.0",
     "ts-node": "~10.2.1",
     "tslint": "~6.1.0",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.7"
   }
 }

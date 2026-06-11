@@ -56,6 +56,12 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": ""
@@ -78,23 +84,13 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": ["src/polyfills.ts"],
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              {
-                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                "inject": true
-              },
-              "src/styles.scss"
-            ],
-            "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
+            "coverage": true,
+            "coverageReporters": ["html"],
+            "reporters": [
+              "default",
+              ["junit", { "outputFile": "./reports/junit-report.xml" }]
             ]
           }
         }
@@ -132,17 +128,22 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/angular-material-shared/ng-package.prod.json"
-            ,              "tsConfig": "projects/angular-material-shared/tsconfig.lib.prod.json"
-}
+              "project": "projects/angular-material-shared/ng-package.prod.json",
+              "tsConfig": "projects/angular-material-shared/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "project": "projects/angular-material-shared/ng-package.json",
+              "tsConfig": "projects/angular-material-shared/tsconfig.lib.json"
+            }
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/angular-material-shared/src/test.ts",
-            "tsConfig": "projects/angular-material-shared/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-material-shared/karma.conf.js"
+            "reporters": [
+              "default",
+              ["junit", { "outputFile": "./reports/junit-report1.xml" }]
+            ]
           }
         }
       }
