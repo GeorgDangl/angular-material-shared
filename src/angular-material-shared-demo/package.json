@@ -45,6 +45,7 @@
     "@angular/compiler-cli": "^21.1.1",
     "@angular/language-service": "^21.1.1",
     "@types/node": "^25.9.2",
+    "@vitest/coverage-v8": "^4.1.8",
     "codelyzer": "^6.0.2",
     "jsdom": "^29.1.1",
     "ng-packagr": "^21.0.0",
