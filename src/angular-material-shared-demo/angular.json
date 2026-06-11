@@ -87,7 +87,11 @@
           "builder": "@angular/build:unit-test",
           "options": {
             "coverage": true,
-            "coverageReporters": ["html"]
+            "coverageReporters": ["html"],
+            "reporters": [
+              "default",
+              ["junit", { "outputFile": "./reports/junit-report.xml" }]
+            ]
           }
         }
       }
@@ -134,7 +138,13 @@
           }
         },
         "test": {
-          "builder": "@angular/build:unit-test"
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "reporters": [
+              "default",
+              ["junit", { "outputFile": "./reports/junit-report1.xml" }]
+            ]
+          }
         }
       }
     }
