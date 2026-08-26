@@ -2,6 +2,11 @@
 
 All notable changes to **angular-material-shared** are documented here.
 
+## v2.9.0:
+
+- Update Angular to v21
+- Added `additionalInit` input to `TinyMceComponent` to allow custom TinyMCE configuration with proper merging of `setup`, `init_instance_callback`, `plugins`, and `toolbar`
+
 ## v2.8.0:
 
 - Update Angular to v19
