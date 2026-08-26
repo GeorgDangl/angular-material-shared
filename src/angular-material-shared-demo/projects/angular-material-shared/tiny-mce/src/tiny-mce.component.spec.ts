@@ -1,17 +1,23 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Editor, RawEditorOptions } from 'tinymce';
 
 import { TinyMceComponent } from './tiny-mce.component';
 
-(window as any).global = window
+interface TinymceStub {
+  init(options: RawEditorOptions): Promise<Editor[]>;
+  remove(): void;
+}
+
+(window as unknown as { global: Window }).global = window;
 
 describe('TinyMceComponent', () => {
   let component: TinyMceComponent;
   let fixture: ComponentFixture<TinyMceComponent>;
-  let tinyMceInitParam: any;
+  let tinyMceInitParam: RawEditorOptions | null;
   let tinyMceRemoveCalled = false;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [TinyMceComponent],
       providers: [
         {
@@ -21,13 +27,17 @@ describe('TinyMceComponent', () => {
       ]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
-    (<any>global).tinymce = {
-      init: x => { tinyMceInitParam = x; },
-      remove: x => { tinyMceRemoveCalled = true; }
+    const tinymceStub: TinymceStub = {
+      init: (options) => {
+        tinyMceInitParam = options;
+        return Promise.resolve([]);
+      },
+      remove: () => { tinyMceRemoveCalled = true; }
     };
+    (globalThis as unknown as { tinymce: TinymceStub }).tinymce = tinymceStub;
     tinyMceInitParam = null;
     tinyMceRemoveCalled = false;
 
@@ -45,6 +55,6 @@ describe('TinyMceComponent', () => {
   });
 
   it('should have injected correct base url', () => {
-    expect(tinyMceInitParam.base_url).toEqual('tinymce-assets');
+    expect(tinyMceInitParam?.base_url).toEqual('tinymce-assets');
   });
 });

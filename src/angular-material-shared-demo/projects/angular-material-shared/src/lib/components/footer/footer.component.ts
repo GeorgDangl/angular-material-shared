@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, input, output } from '@angular/core';
 
 import { FooterOptions } from '../../models/footer-options';
 
@@ -15,15 +15,15 @@ import { RouterModule } from '@angular/router';
 export class FooterComponent {
   currentYear = new Date().getFullYear();
 
-  @Input() showLegalNotice = false;
-  @Input() showPrivacy = false;
-  @Input() legalNoticeText = 'Legal Notice';
-  @Input() privacyText = 'Privacy';
-  @Input() legalNoticeLink = 'legal-notice';
-  @Input() privacyLink = 'privacy';
-  @Input() useLegalNoticeCallback = false;
-  @Input() usePrivaceCallback = false;
-  @Input() options: FooterOptions;
-  @Output() legalNoticeCallback = new EventEmitter();
-  @Output() privacyCallback = new EventEmitter();
+  readonly showLegalNotice = input(false);
+  readonly showPrivacy = input(false);
+  readonly legalNoticeText = input('Legal Notice');
+  readonly privacyText = input('Privacy');
+  readonly legalNoticeLink = input('legal-notice');
+  readonly privacyLink = input('privacy');
+  readonly useLegalNoticeCallback = input(false);
+  readonly usePrivaceCallback = input(false);
+  @Input() options?: FooterOptions;
+  readonly legalNoticeCallback = output();
+  readonly privacyCallback = output();
 }

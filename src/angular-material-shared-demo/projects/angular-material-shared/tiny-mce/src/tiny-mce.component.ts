@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, Input, NgZone, OnInit } from '@angular/core';
+import { Component, forwardRef, Inject, NgZone, OnInit, input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { GuidGenerator } from '@dangl/angular-material-shared/guid-generator';
@@ -17,13 +17,13 @@ import { RawEditorOptions, Editor } from 'tinymce';
     imports: [EditorModule]
 })
 export class TinyMceComponent implements OnInit, ControlValueAccessor {
-  @Input() tinyMceLanguageCode: string;
-  @Input() additionalInit: Partial<RawEditorOptions>;
+  readonly tinyMceLanguageCode = input<string | undefined>(undefined);
+  readonly additionalInit = input<Partial<RawEditorOptions> | undefined>(undefined);
 
   elementId = GuidGenerator.generatePseudoRandomGuid();
-  editor: Editor;
-  init:RawEditorOptions;
-  private _editorContent: string;
+  editor!: Editor;
+  init!: RawEditorOptions;
+  private _editorContent = '';
   private _disabled = false;
   get editorContent(): string {
     return this._editorContent;

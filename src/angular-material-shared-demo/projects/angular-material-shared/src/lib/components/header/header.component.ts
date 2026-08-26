@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  EventEmitter,
   Input,
   OnChanges,
   output,
-  Output,
   SimpleChanges,
+  input
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,17 +25,17 @@ import { RouterLink } from '@angular/router';
     ]
 })
 export class HeaderComponent implements OnChanges {
-  @Input() prefix: string;
-  @Input() postfix: string;
-  @Input() showMenuButton = false;
+  @Input() prefix?: string;
+  @Input() postfix?: string;
+  readonly showMenuButton = input(false);
   @Input() logoInitials = 'GD';
-  @Input() iconUrl: string;
-  @Output() menuButtonClicked = new EventEmitter();
+  @Input() iconUrl?: string;
+  readonly menuButtonClicked = output();
   closePreReleaseNotification = output<void>();
 
-  @Input() preReleaseVersion: string;
-  @Input() preReleaseBuildDate: Date;
-  @Input() preReleaseLiveSiteLink: string;
+  @Input() preReleaseVersion?: string;
+  @Input() preReleaseBuildDate?: Date;
+  @Input() preReleaseLiveSiteLink?: string;
 
   @Input() set showPrerelease(val: boolean) {
     if (val) {
@@ -55,7 +54,7 @@ export class HeaderComponent implements OnChanges {
     return this._showPrerelease;
   }
 
-  private _showPrerelease: boolean;
+  private _showPrerelease = false;
   private _forceDisablePrereleaseHeader = false;
 
   ngOnChanges(_: SimpleChanges): void {
@@ -78,7 +77,7 @@ export class HeaderComponent implements OnChanges {
   }
 
   hideForCurrentVersion() {
-    if (typeof Storage !== "undefined") {
+    if (typeof Storage !== "undefined" && this.preReleaseVersion != null) {
       localStorage.setItem(
         "dangl_preview_notice_header_hide_version",
         this.preReleaseVersion
