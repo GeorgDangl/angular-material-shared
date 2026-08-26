@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, Input, NgZone, OnInit } from '@angular/core';
+import { Component, forwardRef, Inject, NgZone, OnInit, input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { GuidGenerator } from '@dangl/angular-material-shared/guid-generator';
@@ -17,12 +17,13 @@ import { RawEditorOptions, Editor } from 'tinymce';
     imports: [EditorModule]
 })
 export class TinyMceComponent implements OnInit, ControlValueAccessor {
-  @Input() tinyMceLanguageCode: string;
+  readonly tinyMceLanguageCode = input<string | undefined>(undefined);
+  readonly additionalInit = input<Partial<RawEditorOptions> | undefined>(undefined);
 
   elementId = GuidGenerator.generatePseudoRandomGuid();
-  editor: Editor;
-  init:RawEditorOptions;
-  private _editorContent: string;
+  editor!: Editor;
+  init!: RawEditorOptions;
+  private _editorContent = '';
   private _disabled = false;
   get editorContent(): string {
     return this._editorContent;
@@ -53,7 +54,7 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
     this.init = {
       selector:`#${this.elementId}`,
       plugins: ['link', 'table', 'image', 'code'],
-      language: this.tinyMceLanguageCode,
+      language: this.tinyMceLanguageCode(),
       base_url: this.baseUrl,
       promotion: false,
       branding: false, // To disable 'POWERED BY TINYMCE' in footer
@@ -68,8 +69,9 @@ export class TinyMceComponent implements OnInit, ControlValueAccessor {
           editor.setContent(this.editorContent);
         }
         this.editor = editor;
-        this.setDisabledState(this._disabled)
-      }
+        this.setDisabledState?.(this._disabled);
+      },
+      ...(this.additionalInit() ?? {})
     };
   }
 

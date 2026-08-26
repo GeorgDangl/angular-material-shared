@@ -25,33 +25,33 @@
           ></span>
         }
       }
-      @if (showLegalNotice) {
+      @if (showLegalNotice()) {
         -
-        @if (!useLegalNoticeCallback) {
-          <a [routerLink]="legalNoticeLink">{{
-            legalNoticeText
+        @if (!useLegalNoticeCallback()) {
+          <a [routerLink]="legalNoticeLink()">{{
+            legalNoticeText()
           }}</a>
         }
-        @if (useLegalNoticeCallback) {
+        @if (useLegalNoticeCallback()) {
           <a
             href="javascript:void(0)"
-            (click)="legalNoticeCallback.next(null)"
-            >{{ legalNoticeText }}</a
+            (click)="legalNoticeCallback.emit()"
+            >{{ legalNoticeText() }}</a
             >
           }
         }
-        @if (showPrivacy) {
+        @if (showPrivacy()) {
           -
-          @if (!usePrivaceCallback) {
-            <a [routerLink]="privacyLink">{{
-              privacyText
+          @if (!usePrivaceCallback()) {
+            <a [routerLink]="privacyLink()">{{
+              privacyText()
             }}</a>
           }
-          @if (usePrivaceCallback) {
+          @if (usePrivaceCallback()) {
             <a
               href="javascript:void(0)"
-              (click)="privacyCallback.next(null)"
-              >{{ privacyText }}</a
+              (click)="privacyCallback.emit()"
+              >{{ privacyText() }}</a
               >
             }
           }

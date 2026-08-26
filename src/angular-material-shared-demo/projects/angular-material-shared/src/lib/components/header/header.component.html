@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    @if (showMenuButton) {
+    @if (showMenuButton()) {
       <button
         mat-mini-fab
         class="menu-button"
-        (click)="menuButtonClicked.next(null)"
+        (click)="menuButtonClicked.emit()"
         >
         <mat-icon>menu</mat-icon>
       </button>
