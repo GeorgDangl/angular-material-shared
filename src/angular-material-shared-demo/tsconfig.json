@@ -4,16 +4,16 @@
     "strictTemplates": true
   },
   "compilerOptions": {
-    "baseUrl": "./",
     "importHelpers": true,
     "esModuleInterop": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2020",
+    "module": "es2022",
     "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "target": "ES2022",
+    "types": ["jasmine", "node"],
     "typeRoots": [
       "node_modules/@types"
     ],
