@@ -1,8 +1,8 @@
-import { ApplicationConfig, provideZoneChangeDetection } from "@angular/core";
+import { ApplicationConfig, provideZonelessChangeDetection } from "@angular/core";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { provideRouter } from "@angular/router";
-import { routes } from "src/app/app.routes";
+import { routes } from "./app.routes";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimationsAsync(), provideZoneChangeDetection()],
+  providers: [provideRouter(routes), provideAnimationsAsync(), provideZonelessChangeDetection()],
 };
