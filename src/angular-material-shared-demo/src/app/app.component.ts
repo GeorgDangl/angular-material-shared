@@ -28,4 +28,8 @@ export class AppComponent {
     alert(`Button clicked and ID ${this.generatedId} generated`);
   }
 
+  preReleaseNotificationClosed() {
+    alert('Pre-release notification closed');
+  }
+
 }

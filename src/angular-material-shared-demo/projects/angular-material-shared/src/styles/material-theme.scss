@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-@import './material-variables.scss';
+@use './material-variables.scss';
 
 // @import '@angular/material/theming';
 // Plus imports for other components in your app.
@@ -23,5 +23,5 @@
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 // @include mat.all-legacy-component-themes($dangl-app-theme);
-@include mat.all-component-themes($dangl-app-theme);
+@include mat.all-component-themes(material-variables.$dangl-app-theme);
 @include mat.typography-hierarchy(mat.m2-define-typography-config());

@@ -1,0 +1,25 @@
+name: frontend-tests
+
+on: push
+
+jobs:
+  windows-tests:
+    name: windows-tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '10.0'
+      - name: Run './build.cmd NgLibraryTest'
+        run: ./build.cmd NgLibraryTest
+  ubuntu-tests:
+    name: ubuntu-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '10.0'
+      - name: Run './build.cmd NgLibraryTest'
+        run: ./build.cmd NgLibraryTest

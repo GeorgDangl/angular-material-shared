@@ -68,3 +68,34 @@ mat-toolbar-row {
   align-items: center;
 }
 
+.preview-notice {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  width: 100%;
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    text-wrap: wrap;
+    word-break: break-all;
+  }
+
+  .warn-message {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+  }
+
+  .btn-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+
+}

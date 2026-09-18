@@ -4,29 +4,25 @@
     "strictTemplates": true
   },
   "compilerOptions": {
-    "baseUrl": "./",
     "importHelpers": true,
     "esModuleInterop": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2020",
-    "moduleResolution": "node",
+    "module": "es2022",
+    "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "target": "ES2022",
+    "types": ["jasmine", "node"],
     "typeRoots": [
       "node_modules/@types"
     ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
     "paths": {
       "@dangl/angular-material-shared/*": [
-        "./projects/angular-material-shared/*",
+        "./projects/angular-material-shared/*"
       ],
       "@dangl/angular-material-shared": [
-        "./projects/angular-material-shared",
+        "./projects/angular-material-shared"
       ]
     },
     "useDefineForClassFields": false

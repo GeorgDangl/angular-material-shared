@@ -1,9 +1,9 @@
 // Import material theming functions
 @use '@angular/material' as mat;
+@use "./hex-to-rgba.scss";
 // @import '@angular/material/theming';
 @include mat.elevation-classes();
 @include mat.app-background();
-@import "./hex-to-rgba.scss";
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
@@ -33,10 +33,10 @@ $color-dark: #3b4c55;
 $color-light: #bdbdbd;
 
 :root {
-  --color-primary: #{hex-to-rgba($color-primary,1)};
-  --color-accent: #{hex-to-rgba($color-accent,1)};
-  --color-warn: #{hex-to-rgba($color-warn,1)};
+  --color-primary: #{hex-to-rgba.hex-to-rgba($color-primary,1)};
+  --color-accent: #{hex-to-rgba.hex-to-rgba($color-accent,1)};
+  --color-warn: #{hex-to-rgba.hex-to-rgba($color-warn,1)};
   --color-dark: #3b4c55;
   --color-light: #bdbdbd;
-  --color-primary-rgba: #{hex-to-rgba($color-primary,1)};
+  --color-primary-rgba: #{hex-to-rgba.hex-to-rgba($color-primary,1)};
 }

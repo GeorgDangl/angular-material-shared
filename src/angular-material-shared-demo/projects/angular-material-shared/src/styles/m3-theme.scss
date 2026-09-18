@@ -1,11 +1,11 @@
 @use '@angular/material' as mat;
-@use './m3_theme-colors.scss' as dangl-theme;
-@import "./hex-to-rgba.scss";
-@import "./partials/logo.scss";
-@import "./partials/mat-toolbar.scss";
-@import "./partials/side-navbar.scss";
-@import "./partials/footer.scss";
-@import "./partials/highlights.scss";
+@use 'm3_theme-colors' as dangl-theme;
+@use "./hex-to-rgba.scss";
+@use "./partials/logo.scss";
+@use "./partials/mat-toolbar.scss";
+@use "./partials/side-navbar.scss";
+@use "./partials/footer.scss";
+@use "./partials/highlights.scss";
 
 
 html {
