@@ -31,7 +31,7 @@
     "@angular/material": "^22.0.0",
     "@angular/platform-browser": "^22.0.0",
     "@angular/platform-browser-dynamic": "^22.0.0",
-    "@angular/router": "^22.0.0",
+    "@angular/router": "^22.2.0",
     "@tinymce/tinymce-angular": "^9.0.0",
     "core-js": "^3.21.0",
     "rxjs": "^7.8.1",
